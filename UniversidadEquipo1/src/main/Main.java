@@ -5,6 +5,9 @@
  */
 package main;
 
+import accesoadatos.Conexion;
+import java.sql.*;
+
 /**
  *
  * @author Carlos
@@ -16,6 +19,8 @@ public class Main {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+     Connection con =  Conexion.getConexion();
+        
     }
     
 }
