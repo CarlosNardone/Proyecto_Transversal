@@ -5,10 +5,53 @@
  */
 package accesoadatos;
 
+import entidades.Materia;
+import java.sql.*;
+import java.util.List;
+
 /**
  *
  * @author Carlos
  */
 public class MateriaData {
+    private int idMateria;
+    private Connection con = null;
+
+    public MateriaData() {
+        con = Conexion.getConexion();
+    }
+    
+    
+    public void guardarMateria(Materia materia){
+        
+    }
+    
+    public Materia buscarMateria(int id){
+        
+        return buscarMateria(id);
+    }
+    
+    
+    
+    public void modificarMateria(Materia materia){
+        
+    }
+    
+    
+    
+    public void eliminarMateria(int id){
+        
+    }
+    
+    
+    
+    
+    List<Materia>listarMaterias(){
+        
+     
+        
+        
+        return listarMaterias();
+    }
     
 }
