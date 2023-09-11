@@ -38,8 +38,8 @@ public class AlumnoData {
 
         try {
 
-            PreparedStatement ps = con.prepareStatement("INSERT INTO alumno(dni"
-                    + " apellido, nombre, fechaNacimiento, estado) "
+            PreparedStatement ps = con.prepareStatement ("INSERT INTO alumno"
+                    + "(dni, apellido, nombre, fechaNacimiento, estado) "
                     + "VALUES (?, ?, ?, ?, ?)", Statement.RETURN_GENERATED_KEYS);
             ps.setInt(1, alumno.getDni());
             ps.setString(2, alumno.getApellido());
@@ -53,9 +53,11 @@ public class AlumnoData {
             }
             rs.close();
             ps.close();
+            System.out.println(rs);
 
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error de conexion");
+            System.err.println(ex);
         }
 
     }
