@@ -9,7 +9,11 @@ import entidades.Alumno;
 import entidades.Inscripcion;
 import entidades.Materia;
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -41,8 +45,33 @@ public class InscripcionData {
     }
 
     public List<Materia> obtenerMateriasCursadas(int id) {
-
-        return obtenerMateriasCursadas(id);
+        List<Materia> materias = new ArrayList <Materia>();
+        
+        String sql = "SELECT inscripcion.idMateria, nombre, año FROM inscripcion,"
+                + "materia WHERE inscripcion.idMateria = materia.idMateria \n"
+                + "AND inscripcion.idAlumno = ?";
+        
+        
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            Materia materia;
+            
+            while(rs.next()){
+                materia = new Materia();
+                materia.setIdMateria(rs.getInt("idMateria"));
+                materia.setNombre(rs.getString("nombre"));
+                materia.setAnioMateria(rs.getInt("año"));
+                materias.add(materia);
+            }
+            ps.close();
+            
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al obtener inscripciones." + ex.getMessage());
+        }
+        
+        return materias;
     }
 
     public List<Materia> obtenerMateriasNOCursadas(int id) {
