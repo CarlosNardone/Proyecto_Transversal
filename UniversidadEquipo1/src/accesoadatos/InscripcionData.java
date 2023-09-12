@@ -29,7 +29,27 @@ public class InscripcionData {
         con = Conexion.getConexion();
     }
 
-    public void guardarInscripcion(Inscripcion insc) {
+    public void guardarInscripcion(Inscripcion insc)
+      {
+          String sql = "INSERT INTO inscripcion(nota,idAlumno,idMateria) VALUES(?,?,?)"; 
+        try {            
+            PreparedStatement ps= con.prepareStatement(sql);
+            
+            ps.setDouble(1,insc.getNota());
+            ps.setInt(2,insc.getAlumno().getIdAlumno());
+            ps.setInt(3,insc.getMateria().getIdMateria());
+            ps.executeUpdate();
+            ResultSet rs= ps.getGeneratedKeys() ;
+            if (rs.next()){
+                JOptionPane.showMessageDialog(null, "Inscripcion guardada con exito");     
+            }
+            rs.close();
+            ps.close();
+            
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, " Error de conexion ");
+            
+        }
         
 
     }
@@ -92,6 +112,8 @@ public class InscripcionData {
        
         return obtenerAlumnosXMateria(idMateria);
     }
+    
+    
     
     
 }

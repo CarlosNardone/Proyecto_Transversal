@@ -7,8 +7,10 @@ package main;
 
 import accesoadatos.AlumnoData;
 import accesoadatos.Conexion;
+import accesoadatos.InscripcionData;
 import accesoadatos.MateriaData;
 import entidades.Alumno;
+import entidades.Inscripcion;
 import entidades.Materia;
 import java.sql.*;
 import java.time.LocalDate;
@@ -26,6 +28,9 @@ public class Main {
     public static void main(String[] args) {
         // TODO code application logic here
      Connection con =  Conexion.getConexion();
+     InscripcionData incs=new InscripcionData();
+     Inscripcion incscarlos = new Inscripcion(8,4,7);
+         
 //     Materia matematicas = new Materia(5,"Matematica", 1 ,true);
 //     Materia ingles = new Materia("Ingles", 2 ,true);
 //     Materia informatica = new Materia("Informatica", 4, true);
@@ -74,10 +79,10 @@ public class Main {
 //            System.out.println(alumno.getNombre());
 //            System.out.println(alumno.getFechaNacimiento());
 //
+              
 //       }
        
        
        
     }
-
 }
