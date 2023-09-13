@@ -31,8 +31,8 @@ public class Main {
 //     InscripcionData incs=new InscripcionData();
 //     Alumno alum = new Alumno();
 //     alum.setIdAlumno(5);
-     
 //     carlos.getIdAlumno();
+
 //     Inscripcion incscarlos = new Inscripcion(alum,8,8);
          
 //     Materia matematicas = new Materia(5,"Matematica", 1 ,true);
@@ -60,7 +60,7 @@ public class Main {
 //    }
      
     
-//       Alumno carlos = new Alumno(37577100,"Dome", "Carlos", LocalDate.of(1994, 11, 22), true);
+//       Alumno carlos = new Alumno(37577100,"Nardone", "Carlos", LocalDate.of(1994, 11, 22), true);
        Alumno franco = new Alumno(433132332,"Lopez", "Franco", LocalDate.of(2001, 10, 21), true);
 //        Alumno eduardo = new Alumno(5, 567543553, "Rodrigues", "Juan Eduardo", LocalDate.of(1986, 12, 23), true);
 //        Alumno diego = new Alumno (24652571, "Bazzoni","Diego",LocalDate.of(1976, 1, 23), true);

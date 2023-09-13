@@ -5,17 +5,26 @@
  */
 package vistas;
 
+import accesoadatos.AlumnoData;
+import entidades.Alumno;
+
 /**
  *
  * @author Carlos
  */
 public class MenuPrincipalView extends javax.swing.JFrame {
+    private Alumno alum;
+    private AlumnoData alu;
+    
 
     /**
      * Creates new form MenuPrincipalView
      */
     public MenuPrincipalView() {
         initComponents();
+        alu = new AlumnoData();
+        alu.buscarAlumnoPorDni(documento);
+        
     }
 
     /**
@@ -56,6 +65,11 @@ public class MenuPrincipalView extends javax.swing.JFrame {
         jMenuAlumno.setText("Alumno");
 
         jmiFormularioA.setText("Formulario de Alumno");
+        jmiFormularioA.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiFormularioAActionPerformed(evt);
+            }
+        });
         jMenuAlumno.add(jmiFormularioA);
 
         jMenuBar1.add(jMenuAlumno);
@@ -85,6 +99,11 @@ public class MenuPrincipalView extends javax.swing.JFrame {
         jMenuBar1.add(jMenuConsultas);
 
         jMenuSalir.setText("Salir");
+        jMenuSalir.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenuSalirMouseClicked(evt);
+            }
+        });
         jMenuBar1.add(jMenuSalir);
 
         setJMenuBar(jMenuBar1);
@@ -105,6 +124,22 @@ public class MenuPrincipalView extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jmiFormularioAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiFormularioAActionPerformed
+        // TODO add your handling code here:
+                        jdEscritorio.removeAll();
+        jdEscritorio.repaint();
+        GestionDeAlumnosView gda = new GestionDeAlumnosView();
+        gda.setVisible(true);
+        jdEscritorio.add(gda);
+        jdEscritorio.moveToFront(gda);
+    }//GEN-LAST:event_jmiFormularioAActionPerformed
+
+    private void jMenuSalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuSalirMouseClicked
+        // TODO add your handling code here:
+        System.exit(0);
+        this.dispose();
+    }//GEN-LAST:event_jMenuSalirMouseClicked
 
     /**
      * @param args the command line arguments
@@ -155,4 +190,8 @@ public class MenuPrincipalView extends javax.swing.JFrame {
     private javax.swing.JMenuItem jmiManejoinscripciones;
     private javax.swing.JMenuItem jmiManipNotas;
     // End of variables declaration//GEN-END:variables
+
+    
+    
 }
+

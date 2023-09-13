@@ -151,7 +151,7 @@ public class AlumnoData {
         return alumno;
     }
     
-        public Alumno buscarAlumnoPorDni(int dni){
+        public  Alumno buscarAlumnoPorDni(int dni){
         String sql = "SELECT idAlumno,dni, apellido, nombre, fechaNacimiento FROM alumno WHERE dni = ? AND estado = 1";
         Alumno alumno = null;
         
