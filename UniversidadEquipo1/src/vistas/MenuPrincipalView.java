@@ -24,7 +24,7 @@ public class MenuPrincipalView extends javax.swing.JFrame {
     public MenuPrincipalView() {
         initComponents();
         alu = new AlumnoData();
-        alu.buscarAlumnoPorDni(documento);
+//        alu.buscarAlumnoPorDni(documento);
 
     }
 
