@@ -13,9 +13,10 @@ import entidades.Alumno;
  * @author Carlos
  */
 public class MenuPrincipalView extends javax.swing.JFrame {
+
     private Alumno alum;
     private AlumnoData alu;
-    
+    private int documento;
 
     /**
      * Creates new form MenuPrincipalView
@@ -24,7 +25,7 @@ public class MenuPrincipalView extends javax.swing.JFrame {
         initComponents();
         alu = new AlumnoData();
         alu.buscarAlumnoPorDni(documento);
-        
+
     }
 
     /**
@@ -127,7 +128,7 @@ public class MenuPrincipalView extends javax.swing.JFrame {
 
     private void jmiFormularioAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiFormularioAActionPerformed
         // TODO add your handling code here:
-                        jdEscritorio.removeAll();
+        jdEscritorio.removeAll();
         jdEscritorio.repaint();
         GestionDeAlumnosView gda = new GestionDeAlumnosView();
         gda.setVisible(true);
@@ -191,7 +192,4 @@ public class MenuPrincipalView extends javax.swing.JFrame {
     private javax.swing.JMenuItem jmiManipNotas;
     // End of variables declaration//GEN-END:variables
 
-    
-    
 }
-
