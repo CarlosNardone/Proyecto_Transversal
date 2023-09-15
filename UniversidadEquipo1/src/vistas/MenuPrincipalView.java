@@ -139,7 +139,7 @@ public class MenuPrincipalView extends javax.swing.JFrame {
     private void jMenuSalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuSalirMouseClicked
         // TODO add your handling code here:
         System.exit(0);
-        this.dispose();
+//        this.dispose();
     }//GEN-LAST:event_jMenuSalirMouseClicked
 
     /**
