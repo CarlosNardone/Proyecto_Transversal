@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 12-09-2023 a las 23:20:35
+-- Tiempo de generación: 16-09-2023 a las 01:55:33
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -43,9 +43,10 @@ CREATE TABLE `alumno` (
 INSERT INTO `alumno` (`idAlumno`, `dni`, `apellido`, `nombre`, `fechaNacimiento`, `estado`) VALUES
 (4, 37577100, 'Nardone', 'Carlos', '1994-11-22', 1),
 (5, 567543553, 'Rodrigues', 'Juan Eduardo', '1986-12-23', 0),
-(7, 45600100, 'Fernandes', 'Juan Eduardo', '1986-12-23', 1),
+(7, 45600100, 'Fernandes', 'Juan Eduardo', '1986-12-23', 0),
 (8, 24652571, 'Bazzoni', 'Diego', '1976-01-23', 1),
-(9, 30068183, 'Avila', 'Mauricio', '1983-04-10', 1);
+(9, 30068183, 'Avila', 'Mauricio', '1983-04-10', 1),
+(10, 433132332, 'Lopez', 'Franco', '2001-10-21', 0);
 
 -- --------------------------------------------------------
 
@@ -115,7 +116,7 @@ ALTER TABLE `materia`
 -- AUTO_INCREMENT de la tabla `alumno`
 --
 ALTER TABLE `alumno`
-  MODIFY `idAlumno` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `idAlumno` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de la tabla `inscripcion`
