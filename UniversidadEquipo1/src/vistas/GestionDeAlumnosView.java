@@ -20,8 +20,10 @@ public class GestionDeAlumnosView extends javax.swing.JInternalFrame {
     /**
      * Creates new form GestionDeAlumnosView
      */
-    public GestionDeAlumnosView() {
+    public GestionDeAlumnosView(AlumnoData alu) {
         initComponents();
+        this.alu = alu;
+        
     }
 
     /**
@@ -49,6 +51,8 @@ public class GestionDeAlumnosView extends javax.swing.JInternalFrame {
         jbGuardar = new javax.swing.JButton();
         jbSalir = new javax.swing.JButton();
         jbBuscar = new javax.swing.JButton();
+
+        setForeground(java.awt.Color.green);
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel1.setText("Alumno");
@@ -176,7 +180,7 @@ public class GestionDeAlumnosView extends javax.swing.JInternalFrame {
         jtfDocumento.setText("");
         jtfNombre.setText("");
 //        jrbEstado.setDisplayedMnemonicIndex(0);
-//        jdcFechaNacimiento.setDisplayedLocalDate();
+//        jdcFechaNacimiento.set();
     }//GEN-LAST:event_jbNuevoActionPerformed
 
     private void jbBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBuscarActionPerformed
@@ -190,6 +194,7 @@ public class GestionDeAlumnosView extends javax.swing.JInternalFrame {
         jtfApellido.setText(A.getApellido());
         jtfDocumento.setText(Integer.toString(A.getDni()));
         jtfNombre.setText(A.getNombre());
+        
     }//GEN-LAST:event_jbBuscarActionPerformed
 
 

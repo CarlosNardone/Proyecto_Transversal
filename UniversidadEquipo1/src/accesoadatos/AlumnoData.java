@@ -24,7 +24,7 @@ import javax.swing.JOptionPane;
  */
 public class AlumnoData {
 
-    private int idAlumno;
+//    private int idAlumno;
     private Connection con = null;
 
     public AlumnoData() {

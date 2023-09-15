@@ -14,7 +14,7 @@ import entidades.Alumno;
  */
 public class MenuPrincipalView extends javax.swing.JFrame {
 
-    private Alumno alum;
+//    private Alumno alum;
     private AlumnoData alu;
     private int documento;
 
@@ -24,7 +24,6 @@ public class MenuPrincipalView extends javax.swing.JFrame {
     public MenuPrincipalView() {
         initComponents();
         alu = new AlumnoData();
-//        alu.buscarAlumnoPorDni(documento);
 
     }
 
@@ -78,6 +77,11 @@ public class MenuPrincipalView extends javax.swing.JFrame {
         jMenuMateria.setText("Materia");
 
         jmiFormularioMateria.setText("Forrmulario Materia");
+        jmiFormularioMateria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiFormularioMateriaActionPerformed(evt);
+            }
+        });
         jMenuMateria.add(jmiFormularioMateria);
 
         jMenuBar1.add(jMenuMateria);
@@ -130,7 +134,7 @@ public class MenuPrincipalView extends javax.swing.JFrame {
         // TODO add your handling code here:
         jdEscritorio.removeAll();
         jdEscritorio.repaint();
-        GestionDeAlumnosView gda = new GestionDeAlumnosView();
+        GestionDeAlumnosView gda = new GestionDeAlumnosView(alu);
         gda.setVisible(true);
         jdEscritorio.add(gda);
         jdEscritorio.moveToFront(gda);
@@ -139,8 +143,17 @@ public class MenuPrincipalView extends javax.swing.JFrame {
     private void jMenuSalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuSalirMouseClicked
         // TODO add your handling code here:
         System.exit(0);
-//        this.dispose();
     }//GEN-LAST:event_jMenuSalirMouseClicked
+
+    private void jmiFormularioMateriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiFormularioMateriaActionPerformed
+        // TODO add your handling code here:
+                jdEscritorio.removeAll();
+        jdEscritorio.repaint();
+        GestionDeMateriasView gdm = new GestionDeMateriasView();
+        gdm.setVisible(true);
+        jdEscritorio.add(gdm);
+        jdEscritorio.moveToFront(gdm);
+    }//GEN-LAST:event_jmiFormularioMateriaActionPerformed
 
     /**
      * @param args the command line arguments
