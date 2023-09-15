@@ -50,6 +50,8 @@ public class AlumnoData {
             ResultSet rs = ps.getGeneratedKeys();
             if (rs.next()) {
                 JOptionPane.showMessageDialog(null, "El alumno " + alumno.getNombre() + " " + alumno.getApellido() + " ha sido guardada correctamente en la BD.");
+            }else{
+                JOptionPane.showMessageDialog(null, "Alumno inexistente o dado de baja");
             }
             rs.close();
             ps.close();
@@ -101,16 +103,20 @@ public class AlumnoData {
         
     }
     
-    public void eliminarAlumno(int id){
-        String sql = "UPDATE alumno SET estado = 0 WHERE idAlumno = ?";
+    public void eliminarAlumnoPorDNI(int dni){
+        String sql = "UPDATE alumno SET estado = 0  WHERE dni  = ?";
         
         try {
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setInt(1, id);
+            ps.setInt(1, dni);
           int exito =  ps.executeUpdate();
+         
            if(exito == 1){
+               
                JOptionPane.showMessageDialog(null, "Alumno Dado de Baja");
-           } 
+           } else{
+               JOptionPane.showMessageDialog(null, "Este alumno ya esta dado de baja");
+           }
             ps.close();
            
         } catch (SQLException ex) {
@@ -120,8 +126,26 @@ public class AlumnoData {
         
     }   
     
+//        public void eliminarAlumno(int id){
+//        String sql = "UPDATE alumno SET estado = 0 WHERE idAlumno = ?";
+//        
+//        try {
+//            PreparedStatement ps = con.prepareStatement(sql);
+//            ps.setInt(1, id);
+//          int exito =  ps.executeUpdate();
+//           if(exito == 1){
+//               JOptionPane.showMessageDialog(null, "Alumno Dado de Baja");
+//           } 
+//            ps.close();
+//           
+//        } catch (SQLException ex) {
+//            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla alumno");
+//        }
+//        
+//        
+//    }   
     
-    public Alumno buscarAlumno(int id){
+    public Alumno buscarAlumnoporDni(int id){
         String sql = "SELECT dni, apellido, nombre, fechaNacimiento "
                 + "FROM alumno WHERE idAlumno = ? AND estado = 1";
         Alumno alumno = null;

@@ -9,6 +9,7 @@ import accesoadatos.AlumnoData;
 import entidades.Alumno;
 import java.time.LocalDate;
 import java.time.Month;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -75,8 +76,18 @@ public class GestionDeAlumnosView extends javax.swing.JInternalFrame {
         });
 
         jbEliminar.setText("Eliminar");
+        jbEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbEliminarActionPerformed(evt);
+            }
+        });
 
         jbGuardar.setText("Guardar");
+        jbGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbGuardarActionPerformed(evt);
+            }
+        });
 
         jbSalir.setText("Salir");
         jbSalir.addActionListener(new java.awt.event.ActionListener() {
@@ -179,6 +190,8 @@ public class GestionDeAlumnosView extends javax.swing.JInternalFrame {
         jtfApellido.setText("");
         jtfDocumento.setText("");
         jtfNombre.setText("");
+        jrbEstado.setSelected(false);
+        jdcFechaNacimiento.setDate(null);
 //        jrbEstado.setDisplayedMnemonicIndex(0);
 //        jdcFechaNacimiento.set();
     }//GEN-LAST:event_jbNuevoActionPerformed
@@ -186,6 +199,8 @@ public class GestionDeAlumnosView extends javax.swing.JInternalFrame {
     private void jbBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBuscarActionPerformed
         // TODO add your handling code here:
         int documento;
+        
+        try{ 
         documento = Integer.parseInt(jtfDocumento.getText());
         
 //        MenuPrincipalView.alu();
@@ -194,9 +209,37 @@ public class GestionDeAlumnosView extends javax.swing.JInternalFrame {
         jtfApellido.setText(A.getApellido());
         jtfDocumento.setText(Integer.toString(A.getDni()));
         jtfNombre.setText(A.getNombre());
+        jrbEstado.setSelected(A.isActivo());
+        LocalDate fechaNacimiento = A.getFechaNacimiento(); // Suponiendo que tengas un método para obtener la fecha de nacimiento en tu objeto Alumno
+         java.util.Date fechaNacimientoUtil = java.sql.Date.valueOf(fechaNacimiento);
+         jdcFechaNacimiento.setDate(fechaNacimientoUtil);
+    
+    }catch(NullPointerException ex){
+        JOptionPane.showMessageDialog(this, "Ingrese otro dni valido");
+    }
         
     }//GEN-LAST:event_jbBuscarActionPerformed
 
+    private void jbEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEliminarActionPerformed
+        // TODO add your handling code here:
+                                                  
+       int dni;
+       dni = Integer.parseInt(jtfDocumento.getText());
+       alu.eliminarAlumnoPorDNI(dni);
+        jbNuevoActionPerformed(evt);
+    }//GEN-LAST:event_jbEliminarActionPerformed
+
+    private void jbGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGuardarActionPerformed
+        // TODO add your handling code here:
+        int dni = Integer.parseInt(jtfDocumento.getText());
+        String apellido = jtfApellido.getText();
+        String nombre =jtfNombre.getText();
+        boolean estado = jrbEstado.isSelected();
+//        LocalDate fechaNacimiento = Date.valueOf(jdcFechaNacimiento.getCalendar());
+    }//GEN-LAST:event_jbGuardarActionPerformed
+
+    
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
