@@ -89,9 +89,19 @@ public class MenuPrincipalView extends javax.swing.JFrame {
         jMenuAdministracion.setText("Administracion");
 
         jmiManejoinscripciones.setText("Manejo de inscripciones");
+        jmiManejoinscripciones.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiManejoinscripcionesActionPerformed(evt);
+            }
+        });
         jMenuAdministracion.add(jmiManejoinscripciones);
 
         jmiManipNotas.setText("Manipulacion de notas");
+        jmiManipNotas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiManipNotasActionPerformed(evt);
+            }
+        });
         jMenuAdministracion.add(jmiManipNotas);
 
         jMenuBar1.add(jMenuAdministracion);
@@ -99,6 +109,11 @@ public class MenuPrincipalView extends javax.swing.JFrame {
         jMenuConsultas.setText("Consultas");
 
         jmiAlumnoXMateria.setText("Alumnos por Materia");
+        jmiAlumnoXMateria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiAlumnoXMateriaActionPerformed(evt);
+            }
+        });
         jMenuConsultas.add(jmiAlumnoXMateria);
 
         jMenuBar1.add(jMenuConsultas);
@@ -155,6 +170,38 @@ public class MenuPrincipalView extends javax.swing.JFrame {
         jdEscritorio.moveToFront(gdm);
     }//GEN-LAST:event_jmiFormularioMateriaActionPerformed
 
+    private void jmiManejoinscripcionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiManejoinscripcionesActionPerformed
+        // TODO add your handling code here:
+                        jdEscritorio.removeAll();
+        jdEscritorio.repaint();
+        FormularioDeInscripcionView fdi = new FormularioDeInscripcionView();
+        fdi.setVisible(true);
+        jdEscritorio.add(fdi);
+        jdEscritorio.moveToFront(fdi);
+    }//GEN-LAST:event_jmiManejoinscripcionesActionPerformed
+
+    private void jmiManipNotasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiManipNotasActionPerformed
+        // TODO add your handling code here:
+                                jdEscritorio.removeAll();
+        jdEscritorio.repaint();
+        CargaDeNotasView cdn = new CargaDeNotasView();
+        cdn.setVisible(true);
+        jdEscritorio.add(cdn);
+        jdEscritorio.moveToFront(cdn);
+    }//GEN-LAST:event_jmiManipNotasActionPerformed
+
+    private void jmiAlumnoXMateriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiAlumnoXMateriaActionPerformed
+        // TODO add your handling code here:
+                                        jdEscritorio.removeAll();
+        jdEscritorio.repaint();
+        AlumnosPorMateriaView axm = new AlumnosPorMateriaView();
+        axm.setVisible(true);
+        jdEscritorio.add(axm);
+        jdEscritorio.moveToFront(axm);
+    }//GEN-LAST:event_jmiAlumnoXMateriaActionPerformed
+
+    
+    
     /**
      * @param args the command line arguments
      */
