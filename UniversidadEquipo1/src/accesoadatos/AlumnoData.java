@@ -103,6 +103,8 @@ public class AlumnoData {
         
     }
     
+    
+    
     public void eliminarAlumnoPorDNI(int dni){
         String sql = "UPDATE alumno SET estado = 0  WHERE dni  = ?";
         
@@ -125,26 +127,29 @@ public class AlumnoData {
         
         
     }   
+
+    /*
     
-//        public void eliminarAlumno(int id){
-//        String sql = "UPDATE alumno SET estado = 0 WHERE idAlumno = ?";
-//        
-//        try {
-//            PreparedStatement ps = con.prepareStatement(sql);
-//            ps.setInt(1, id);
-//          int exito =  ps.executeUpdate();
-//           if(exito == 1){
-//               JOptionPane.showMessageDialog(null, "Alumno Dado de Baja");
-//           } 
-//            ps.close();
-//           
-//        } catch (SQLException ex) {
-//            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla alumno");
-//        }
-//        
-//        
-//    }   
-    
+        public void eliminarAlumno(int id){
+        String sql = "UPDATE alumno SET estado = 0 WHERE idAlumno = ?";
+        
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, id);
+          int exito =  ps.executeUpdate();
+           if(exito == 1){
+               JOptionPane.showMessageDialog(null, "Alumno Dado de Baja");
+           } 
+            ps.close();
+           
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla alumno");
+        }
+        
+        
+    }   
+    */
+
     public Alumno buscarAlumnoporDni(int id){
         String sql = "SELECT dni, apellido, nombre, fechaNacimiento "
                 + "FROM alumno WHERE idAlumno = ? AND estado = 1";

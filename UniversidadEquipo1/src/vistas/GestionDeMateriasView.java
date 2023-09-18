@@ -5,16 +5,22 @@
  */
 package vistas;
 
+import accesoadatos.MateriaData;
+import entidades.Materia;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Carlos
  */
 public class GestionDeMateriasView extends javax.swing.JInternalFrame {
+    private MateriaData mat;
 
     /**
      * Creates new form GestionDeMateriasView
      */
-    public GestionDeMateriasView() {
+    public GestionDeMateriasView(MateriaData mat) {
+        this.mat = mat;
         initComponents();
     }
 
@@ -38,10 +44,10 @@ public class GestionDeMateriasView extends javax.swing.JInternalFrame {
         jrbEstado = new javax.swing.JRadioButton();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        jbNuevo = new javax.swing.JButton();
+        jbEliminar = new javax.swing.JButton();
+        jbGuardar = new javax.swing.JButton();
+        jbSalir = new javax.swing.JButton();
 
         jPanel1.setForeground(new java.awt.Color(102, 255, 102));
 
@@ -52,6 +58,11 @@ public class GestionDeMateriasView extends javax.swing.JInternalFrame {
         jLabel3.setText("Año");
 
         jbBuscar.setText("Buscar");
+        jbBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbBuscarActionPerformed(evt);
+            }
+        });
 
         jLabel4.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel4.setText("Estado");
@@ -59,13 +70,28 @@ public class GestionDeMateriasView extends javax.swing.JInternalFrame {
         jLabel5.setFont(new java.awt.Font("Century", 2, 18)); // NOI18N
         jLabel5.setText("Materia");
 
-        jButton1.setText("Nuevo");
+        jbNuevo.setText("Nuevo");
+        jbNuevo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbNuevoActionPerformed(evt);
+            }
+        });
 
-        jButton2.setText("Eliminar");
+        jbEliminar.setText("Eliminar");
 
-        jButton3.setText("Guardar");
+        jbGuardar.setText("Guardar");
+        jbGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbGuardarActionPerformed(evt);
+            }
+        });
 
-        jButton4.setText("Salir");
+        jbSalir.setText("Salir");
+        jbSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbSalirActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -101,13 +127,13 @@ public class GestionDeMateriasView extends javax.swing.JInternalFrame {
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButton1)
+                .addComponent(jbNuevo)
                 .addGap(26, 26, 26)
-                .addComponent(jButton2)
+                .addComponent(jbEliminar)
                 .addGap(27, 27, 27)
-                .addComponent(jButton3)
+                .addComponent(jbGuardar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 101, Short.MAX_VALUE)
-                .addComponent(jButton4)
+                .addComponent(jbSalir)
                 .addGap(26, 26, 26))
         );
         jPanel1Layout.setVerticalGroup(
@@ -134,10 +160,10 @@ public class GestionDeMateriasView extends javax.swing.JInternalFrame {
                     .addComponent(jLabel4))
                 .addGap(94, 94, 94)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3)
-                    .addComponent(jButton4))
+                    .addComponent(jbNuevo)
+                    .addComponent(jbEliminar)
+                    .addComponent(jbGuardar)
+                    .addComponent(jbSalir))
                 .addContainerGap(344, Short.MAX_VALUE))
         );
 
@@ -157,12 +183,45 @@ public class GestionDeMateriasView extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jbSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSalirActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_jbSalirActionPerformed
+
+    private void jbBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBuscarActionPerformed
+        // TODO add your handling code here:
+        int codigo;
+        
+        try{
+        codigo = Integer.parseInt(jtfCodigo.getText());
+        
+        Materia M = mat.buscarMateria(codigo);
+        jtfNombre.setText(M.getNombre());
+        jtfAnio.setText(Integer.toString(M.getAnioMateria()));
+        jrbEstado.setSelected(M.isActivo());
+        
+    }catch(NullPointerException ex){
+            JOptionPane.showMessageDialog(null, "Ingrese un codigo de una materia activa");
+            }
+        
+        
+    }//GEN-LAST:event_jbBuscarActionPerformed
+
+    private void jbNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbNuevoActionPerformed
+        // TODO add your handling code here:
+        jtfCodigo.setText("");
+        jtfNombre.setText("");
+        jtfAnio.setText("");
+        jrbEstado.setSelected(false);
+    }//GEN-LAST:event_jbNuevoActionPerformed
+
+    private void jbGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGuardarActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jbGuardarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -170,6 +229,10 @@ public class GestionDeMateriasView extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JButton jbBuscar;
+    private javax.swing.JButton jbEliminar;
+    private javax.swing.JButton jbGuardar;
+    private javax.swing.JButton jbNuevo;
+    private javax.swing.JButton jbSalir;
     private javax.swing.JRadioButton jrbEstado;
     private javax.swing.JTextField jtfAnio;
     private javax.swing.JTextField jtfCodigo;

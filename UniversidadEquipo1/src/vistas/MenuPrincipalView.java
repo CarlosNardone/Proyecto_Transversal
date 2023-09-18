@@ -6,6 +6,7 @@
 package vistas;
 
 import accesoadatos.AlumnoData;
+import accesoadatos.MateriaData;
 import entidades.Alumno;
 
 /**
@@ -16,6 +17,7 @@ public class MenuPrincipalView extends javax.swing.JFrame {
 
 //    private Alumno alum;
     private AlumnoData alu;
+    private MateriaData mat;
     private int documento;
 
     /**
@@ -24,6 +26,7 @@ public class MenuPrincipalView extends javax.swing.JFrame {
     public MenuPrincipalView() {
         initComponents();
         alu = new AlumnoData();
+        mat = new MateriaData();
 
     }
 
@@ -164,7 +167,7 @@ public class MenuPrincipalView extends javax.swing.JFrame {
         // TODO add your handling code here:
                 jdEscritorio.removeAll();
         jdEscritorio.repaint();
-        GestionDeMateriasView gdm = new GestionDeMateriasView();
+        GestionDeMateriasView gdm = new GestionDeMateriasView(mat);
         gdm.setVisible(true);
         jdEscritorio.add(gdm);
         jdEscritorio.moveToFront(gdm);

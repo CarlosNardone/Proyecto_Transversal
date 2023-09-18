@@ -7,6 +7,7 @@ package vistas;
 
 import accesoadatos.AlumnoData;
 import entidades.Alumno;
+import java.sql.Date;
 import java.time.LocalDate;
 import java.time.Month;
 import javax.swing.JOptionPane;
@@ -235,7 +236,7 @@ public class GestionDeAlumnosView extends javax.swing.JInternalFrame {
         String apellido = jtfApellido.getText();
         String nombre =jtfNombre.getText();
         boolean estado = jrbEstado.isSelected();
-//        LocalDate fechaNacimiento = Date.valueOf(jdcFechaNacimiento.getCalendar());
+        LocalDate fechaNacimiento = Date.(jdcFechaNacimiento.getCalendar());
     }//GEN-LAST:event_jbGuardarActionPerformed
 
     
