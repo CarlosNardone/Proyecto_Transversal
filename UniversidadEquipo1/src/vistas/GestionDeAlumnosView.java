@@ -23,6 +23,7 @@ public class GestionDeAlumnosView extends javax.swing.JInternalFrame {
 
     private AlumnoData alu;
     private Alumno alumno;
+    
     /**
      * Creates new form GestionDeAlumnosView
      */
@@ -241,9 +242,12 @@ public class GestionDeAlumnosView extends javax.swing.JInternalFrame {
         String apellido = jtfApellido.getText();
         String nombre =jtfNombre.getText();
         boolean estado = jrbEstado.isSelected();
-        Date date = (Date) jdcFechaNacimiento.getDate();
-        Instant inst = date.toInstant();
-        LocalDate fechaNacimiento = inst.atZone(ZoneId.systemDefault()).toLocalDate();
+        java.sql.Date sqlDate = new java.sql.Date(jdcFechaNacimiento.);
+        
+//        Date date = (Date) jdcFechaNacimiento.getDate();
+//        Instant inst = date.toInstant();
+//        LocalDate fechaNacimiento = inst.atZone(ZoneId.systemDefault()).toLocalDate();
+        
 //        String fecha = jdcFechaNacimiento.toString();
 //        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");  
 //        LocalDate fechaNacimiento = LocalDate.parse(fecha, formatter);
