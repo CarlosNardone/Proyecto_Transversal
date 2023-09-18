@@ -15,7 +15,7 @@ import entidades.Alumno;
  */
 public class MenuPrincipalView extends javax.swing.JFrame {
 
-//    private Alumno alum;
+    private Alumno alum;
     private AlumnoData alu;
     private MateriaData mat;
     private int documento;
@@ -152,7 +152,7 @@ public class MenuPrincipalView extends javax.swing.JFrame {
         // TODO add your handling code here:
         jdEscritorio.removeAll();
         jdEscritorio.repaint();
-        GestionDeAlumnosView gda = new GestionDeAlumnosView(alu);
+        GestionDeAlumnosView gda = new GestionDeAlumnosView(alu,alum);
         gda.setVisible(true);
         jdEscritorio.add(gda);
         jdEscritorio.moveToFront(gda);
