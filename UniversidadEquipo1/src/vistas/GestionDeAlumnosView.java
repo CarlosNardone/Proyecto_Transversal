@@ -10,6 +10,7 @@ import entidades.Alumno;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.time.Month;
+import java.time.format.DateTimeFormatter;
 import javax.swing.JOptionPane;
 
 /**
@@ -19,12 +20,14 @@ import javax.swing.JOptionPane;
 public class GestionDeAlumnosView extends javax.swing.JInternalFrame {
 
     private AlumnoData alu;
+    private Alumno alumno;
     /**
      * Creates new form GestionDeAlumnosView
      */
-    public GestionDeAlumnosView(AlumnoData alu) {
+    public GestionDeAlumnosView(AlumnoData alu, Alumno alumno) {
         initComponents();
         this.alu = alu;
+        this.alumno = alumno;
         
     }
 
@@ -212,7 +215,7 @@ public class GestionDeAlumnosView extends javax.swing.JInternalFrame {
         jtfNombre.setText(A.getNombre());
         jrbEstado.setSelected(A.isActivo());
         LocalDate fechaNacimiento = A.getFechaNacimiento(); // Suponiendo que tengas un método para obtener la fecha de nacimiento en tu objeto Alumno
-         java.util.Date fechaNacimientoUtil = java.sql.Date.valueOf(fechaNacimiento);
+         Date fechaNacimientoUtil = java.sql.Date.valueOf(fechaNacimiento);
          jdcFechaNacimiento.setDate(fechaNacimientoUtil);
     
     }catch(NullPointerException ex){
@@ -236,7 +239,12 @@ public class GestionDeAlumnosView extends javax.swing.JInternalFrame {
         String apellido = jtfApellido.getText();
         String nombre =jtfNombre.getText();
         boolean estado = jrbEstado.isSelected();
-        LocalDate fechaNacimiento = Date.(jdcFechaNacimiento.getCalendar());
+        String fecha = jdcFechaNacimiento.toString();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");  
+        LocalDate fechaNacimiento = LocalDate.parse(fecha, formatter);
+        Alumno alumno = new Alumno(dni, apellido, nombre, fechaNacimiento, estado);
+        alu.guardarAlumno(alumno);
+     
     }//GEN-LAST:event_jbGuardarActionPerformed
 
     
