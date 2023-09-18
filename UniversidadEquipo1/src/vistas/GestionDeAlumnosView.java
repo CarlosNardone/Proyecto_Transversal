@@ -8,8 +8,10 @@ package vistas;
 import accesoadatos.AlumnoData;
 import entidades.Alumno;
 import java.sql.Date;
+import java.time.Instant;
 import java.time.LocalDate;
 import java.time.Month;
+import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import javax.swing.JOptionPane;
 
@@ -239,9 +241,12 @@ public class GestionDeAlumnosView extends javax.swing.JInternalFrame {
         String apellido = jtfApellido.getText();
         String nombre =jtfNombre.getText();
         boolean estado = jrbEstado.isSelected();
-        String fecha = jdcFechaNacimiento.toString();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");  
-        LocalDate fechaNacimiento = LocalDate.parse(fecha, formatter);
+        Date date = (Date) jdcFechaNacimiento.getDate();
+        Instant inst = date.toInstant();
+        LocalDate fechaNacimiento = inst.atZone(ZoneId.systemDefault()).toLocalDate();
+//        String fecha = jdcFechaNacimiento.toString();
+//        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");  
+//        LocalDate fechaNacimiento = LocalDate.parse(fecha, formatter);
         Alumno alumno = new Alumno(dni, apellido, nombre, fechaNacimiento, estado);
         alu.guardarAlumno(alumno);
      
