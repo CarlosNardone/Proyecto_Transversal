@@ -79,6 +79,11 @@ public class GestionDeMateriasView extends javax.swing.JInternalFrame {
         });
 
         jbEliminar.setText("Eliminar");
+        jbEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbEliminarActionPerformed(evt);
+            }
+        });
 
         jbGuardar.setText("Guardar");
         jbGuardar.addActionListener(new java.awt.event.ActionListener() {
@@ -225,6 +230,11 @@ public class GestionDeMateriasView extends javax.swing.JInternalFrame {
         Materia materia = new Materia(id, nombre, año, estado);
         mat.guardarMateria(materia);
     }//GEN-LAST:event_jbGuardarActionPerformed
+
+    private void jbEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEliminarActionPerformed
+        int id = Integer.parseInt(jtfCodigo.getText());
+        mat.eliminarMateria(id);
+    }//GEN-LAST:event_jbEliminarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

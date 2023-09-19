@@ -33,7 +33,7 @@ public class InscripcionData {
       {
           String sql = "INSERT INTO inscripcion(nota,idAlumno,idMateria) VALUES(?,?,?)"; 
         try {            
-            PreparedStatement ps= con.prepareStatement(sql);
+            PreparedStatement ps= con.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
             
             ps.setDouble(1,insc.getNota());
             ps.setInt(2,insc.getAlumno().getIdAlumno());
