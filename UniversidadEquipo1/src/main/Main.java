@@ -89,9 +89,9 @@ public class Main {
                 MateriaData mat = new MateriaData();
                 InscripcionData insc = new InscripcionData();
                 
-                Alumno ricardo = aludata.buscarAlumnoPorDni(43313);
-                Materia lengua = mat.buscarMateria(5);
-                Inscripcion in = new Inscripcion(ricardo, lengua, 10);
+                Alumno carlos = aludata.buscarAlumnoPorDni(37577100);
+                Materia lengua = mat.buscarMateria(8);
+                Inscripcion in = new Inscripcion(carlos, lengua, 10);
                 
                 insc.guardarInscripcion(in);
 //       }

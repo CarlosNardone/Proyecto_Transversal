@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 19-09-2023 a las 03:46:10
+-- Tiempo de generación: 20-09-2023 a las 01:52:38
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -47,7 +47,8 @@ INSERT INTO `alumno` (`idAlumno`, `dni`, `apellido`, `nombre`, `fechaNacimiento`
 (8, 24652571, 'Bazzoni', 'Diego', '1976-01-23', 1),
 (9, 30068183, 'Avila', 'Mauricio', '1983-04-10', 1),
 (10, 433132332, 'Lopez', 'Franco', '2001-10-21', 0),
-(11, 6469646, 'Sarmiento', 'Juan', '1996-06-11', 1);
+(11, 6469646, 'Sarmiento', 'Juan', '1996-06-11', 1),
+(12, 568323445, 'Robledo', 'Roberto', '1987-02-01', 1);
 
 -- --------------------------------------------------------
 
@@ -61,6 +62,13 @@ CREATE TABLE `inscripcion` (
   `idAlumno` int(11) NOT NULL,
   `idMateria` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `inscripcion`
+--
+
+INSERT INTO `inscripcion` (`idInscripto`, `nota`, `idAlumno`, `idMateria`) VALUES
+(7, 10, 4, 8);
 
 -- --------------------------------------------------------
 
@@ -117,13 +125,13 @@ ALTER TABLE `materia`
 -- AUTO_INCREMENT de la tabla `alumno`
 --
 ALTER TABLE `alumno`
-  MODIFY `idAlumno` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `idAlumno` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT de la tabla `inscripcion`
 --
 ALTER TABLE `inscripcion`
-  MODIFY `idInscripto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `idInscripto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de la tabla `materia`
