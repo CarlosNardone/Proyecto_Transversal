@@ -242,8 +242,9 @@ public class GestionDeAlumnosView extends javax.swing.JInternalFrame {
         String apellido = jtfApellido.getText();
         String nombre =jtfNombre.getText();
         boolean estado = jrbEstado.isSelected();
-        java.sql.Date sqlDate = new java.sql.Date(jdcFechaNacimiento.);
-        
+        java.util.Date utilDate = jdcFechaNacimiento.getDate();
+        java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
+        LocalDate fechaNacimiento = sqlDate.toLocalDate();
 //        Date date = (Date) jdcFechaNacimiento.getDate();
 //        Instant inst = date.toInstant();
 //        LocalDate fechaNacimiento = inst.atZone(ZoneId.systemDefault()).toLocalDate();
