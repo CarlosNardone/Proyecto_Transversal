@@ -14,6 +14,7 @@ import javax.swing.JOptionPane;
  * @author Carlos
  */
 public class GestionDeMateriasView extends javax.swing.JInternalFrame {
+
     private MateriaData mat;
 
     /**
@@ -191,20 +192,20 @@ public class GestionDeMateriasView extends javax.swing.JInternalFrame {
     private void jbBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBuscarActionPerformed
         // TODO add your handling code here:
         int codigo;
-        
-        try{
-        codigo = Integer.parseInt(jtfCodigo.getText());
-        
-        Materia M = mat.buscarMateria(codigo);
-        jtfNombre.setText(M.getNombre());
-        jtfAnio.setText(Integer.toString(M.getAnioMateria()));
-        jrbEstado.setSelected(M.isActivo());
-        
-    }catch(NullPointerException ex){
+
+        try {
+            codigo = Integer.parseInt(jtfCodigo.getText());
+
+            Materia M = mat.buscarMateria(codigo);
+            jtfNombre.setText(M.getNombre());
+            jtfAnio.setText(Integer.toString(M.getAnioMateria()));
+            jrbEstado.setSelected(M.isActivo());
+
+        } catch (NullPointerException ex) {
             JOptionPane.showMessageDialog(null, "Ingrese un codigo de una materia activa");
-            }
-        
-        
+        }
+
+
     }//GEN-LAST:event_jbBuscarActionPerformed
 
     private void jbNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbNuevoActionPerformed
@@ -217,7 +218,11 @@ public class GestionDeMateriasView extends javax.swing.JInternalFrame {
 
     private void jbGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGuardarActionPerformed
         // TODO add your handling code here:
-        
+        int id = Integer.parseInt(jtfCodigo.getText());
+        String nombre = jtfNombre.getText();
+        int año = Integer.parseInt(jtfAnio.getText());
+        boolean estado = jrbEstado.isSelected();
+        mat.guardarMateria(Materia materia = new Materia(id,nombre, año, estado));
     }//GEN-LAST:event_jbGuardarActionPerformed
 
 

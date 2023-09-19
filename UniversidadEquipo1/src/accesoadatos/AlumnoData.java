@@ -50,8 +50,8 @@ public class AlumnoData {
             ResultSet rs = ps.getGeneratedKeys();
             if (rs.next()) {
                 JOptionPane.showMessageDialog(null, "El alumno " + alumno.getNombre() + " " + alumno.getApellido() + " ha sido guardada correctamente en la BD.");
-            }else{
-                JOptionPane.showMessageDialog(null, "Alumno inexistente o dado de baja");
+//            }else{
+//                JOptionPane.showMessageDialog(null, "Alumno inexistente o dado de baja");
             }
             rs.close();
             ps.close();
