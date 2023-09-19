@@ -222,7 +222,8 @@ public class GestionDeMateriasView extends javax.swing.JInternalFrame {
         String nombre = jtfNombre.getText();
         int año = Integer.parseInt(jtfAnio.getText());
         boolean estado = jrbEstado.isSelected();
-        mat.guardarMateria(Materia materia = new Materia(id,nombre, año, estado));
+        Materia materia = new Materia(id, nombre, año, estado);
+        mat.guardarMateria(materia);
     }//GEN-LAST:event_jbGuardarActionPerformed
 
 
