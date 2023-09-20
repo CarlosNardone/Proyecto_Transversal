@@ -27,14 +27,8 @@ public class Main {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-     Connection con =  Conexion.getConexion();
-//     InscripcionData incs=new InscripcionData();
-//     Alumno alum = new Alumno();
-//     alum.setIdAlumno(5);
-//     carlos.getIdAlumno();
+        Connection con = Conexion.getConexion();
 
-//     Inscripcion incscarlos = new Inscripcion(alum,8,8);
-         
 //     Materia matematicas = new Materia(5,"Matematica", 1 ,true);
 //     Materia ingles = new Materia("Ingles", 2 ,true);
 //     Materia informatica = new Materia("Informatica", 4, true);
@@ -58,14 +52,12 @@ public class Main {
 //         System.out.println("año: " + materiaEncontrada.getAnioMateria());
 //         
 //    }
-     
-    
 //       Alumno carlos = new Alumno(37577100,"Nardone", "Carlos", LocalDate.of(1994, 11, 22), true);
-       //Alumno franco = new Alumno(433132332,"Lopez", "Franco", LocalDate.of(2001, 10, 21), true);
+        //Alumno franco = new Alumno(433132332,"Lopez", "Franco", LocalDate.of(2001, 10, 21), true);
 //        Alumno eduardo = new Alumno(5, 567543553, "Rodrigues", "Juan Eduardo", LocalDate.of(1986, 12, 23), true);
 //        Alumno diego = new Alumno (24652571, "Bazzoni","Diego",LocalDate.of(1976, 1, 23), true);
 //        Alumno mauricio = new Alumno (30068183, "Avila", "Mauricio", LocalDate.of(1983,4,10), true);
-       // AlumnoData alu = new AlumnoData();
+        // AlumnoData alu = new AlumnoData();
         //alu.guardarAlumno(franco);
 //        alu.modificarAlumno(eduardo);
 //        alu.eliminarAlumno(5);
@@ -84,19 +76,17 @@ public class Main {
 //            System.out.println(alumno.getNombre());
 //            System.out.println(alumno.getFechaNacimiento());
 //
-               
-                AlumnoData aludata = new AlumnoData();
-                MateriaData mat = new MateriaData();
-                InscripcionData insc = new InscripcionData();
-                
-                Alumno carlos = aludata.buscarAlumnoPorDni(37577100);
-                Materia lengua = mat.buscarMateria(8);
-                Inscripcion in = new Inscripcion(carlos, lengua, 10);
-                
-                insc.guardarInscripcion(in);
 //       }
-       
-       
-       
+
+        AlumnoData aludata = new AlumnoData();
+        MateriaData mat = new MateriaData();
+        InscripcionData insc = new InscripcionData();
+
+        Alumno carlos = aludata.buscarAlumnoPorDni(37577100);
+        Materia lengua = mat.buscarMateria(8);
+        Inscripcion in = new Inscripcion(carlos, lengua, 10);
+
+        insc.guardarInscripcion(in);
+
     }
 }
