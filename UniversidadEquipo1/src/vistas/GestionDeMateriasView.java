@@ -208,6 +208,8 @@ public class GestionDeMateriasView extends javax.swing.JInternalFrame {
 
         } catch (NullPointerException ex) {
             JOptionPane.showMessageDialog(null, "Ingrese un codigo de una materia activa");
+        } catch (NumberFormatException nu){
+            JOptionPane.showMessageDialog(null, "Solo se pueden ingresar numeros en los campos año y codigo");
         }
 
 
@@ -223,17 +225,25 @@ public class GestionDeMateriasView extends javax.swing.JInternalFrame {
 
     private void jbGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGuardarActionPerformed
         // TODO add your handling code here:
+        try{
         int id = Integer.parseInt(jtfCodigo.getText());
         String nombre = jtfNombre.getText();
         int año = Integer.parseInt(jtfAnio.getText());
         boolean estado = jrbEstado.isSelected();
         Materia materia = new Materia(id, nombre, año, estado);
         mat.guardarMateria(materia);
+        }catch(NumberFormatException ex){
+            JOptionPane.showMessageDialog(null, "Solo se pueden ingresar numeros en los campos año y codigo");
+        }
     }//GEN-LAST:event_jbGuardarActionPerformed
 
     private void jbEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEliminarActionPerformed
+      try{
         int id = Integer.parseInt(jtfCodigo.getText());
         mat.eliminarMateria(id);
+      }catch(NumberFormatException ex){
+          JOptionPane.showMessageDialog(null, "Solo se pueden ingresar numeros en los campos año y codigo");
+      }
     }//GEN-LAST:event_jbEliminarActionPerformed
 
 

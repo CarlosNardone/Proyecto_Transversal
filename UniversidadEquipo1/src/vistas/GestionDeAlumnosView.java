@@ -223,21 +223,27 @@ public class GestionDeAlumnosView extends javax.swing.JInternalFrame {
     
     }catch(NullPointerException ex){
         JOptionPane.showMessageDialog(this, "Ingrese otro dni valido");
+    }catch(NumberFormatException nu){
+        JOptionPane.showMessageDialog(this, "Solo se permiten numeros en los campo dni y fecha");
     }
         
     }//GEN-LAST:event_jbBuscarActionPerformed
 
     private void jbEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEliminarActionPerformed
         // TODO add your handling code here:
-                                                  
+        try{                                          
        int dni;
        dni = Integer.parseInt(jtfDocumento.getText());
        alu.eliminarAlumnoPorDNI(dni);
         jbNuevoActionPerformed(evt);
+        }catch(NumberFormatException ex){
+            JOptionPane.showMessageDialog(this, "Solo se permiten numeros en los campo dni y fecha");
+        }
     }//GEN-LAST:event_jbEliminarActionPerformed
 
     private void jbGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGuardarActionPerformed
         // TODO add your handling code here:
+        try{
         int dni = Integer.parseInt(jtfDocumento.getText());
         String apellido = jtfApellido.getText();
         String nombre =jtfNombre.getText();
@@ -254,7 +260,9 @@ public class GestionDeAlumnosView extends javax.swing.JInternalFrame {
 //        LocalDate fechaNacimiento = LocalDate.parse(fecha, formatter);
         Alumno alumno = new Alumno(dni, apellido, nombre, fechaNacimiento, estado);
         alu.guardarAlumno(alumno);
-     
+        }catch(NumberFormatException ex){
+            JOptionPane.showMessageDialog(this, "Solo se permiten numeros en los campo dni y fecha");
+        }
     }//GEN-LAST:event_jbGuardarActionPerformed
 
     
