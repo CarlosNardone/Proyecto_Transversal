@@ -37,6 +37,8 @@ public class MateriaData {
             ResultSet rs = ps.getGeneratedKeys();
             if (rs.next()) {
                 JOptionPane.showMessageDialog(null, "Materia guardada con exito");
+            }else{
+                JOptionPane.showMessageDialog(null, "Esta materia ya existe");
             }
             rs.close();
             ps.close();
