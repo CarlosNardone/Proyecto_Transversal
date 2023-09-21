@@ -220,7 +220,8 @@ private DefaultTableModel modelo = new DefaultTableModel();
 //            System.out.println(alumno.getApellido());
 //            System.out.println(alumno.getNombre());
 //            System.out.println(alumno.getFechaNacimiento())
-        
-    }
+    
+//     }   
+    
 
 }
