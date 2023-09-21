@@ -82,10 +82,10 @@ public class Main {
         MateriaData mat = new MateriaData();
         InscripcionData insc = new InscripcionData();
 
-        Alumno julio = aludata.buscarAlumnoPorDni(32824319);
+        Alumno julio = aludata.buscarAlumnoPorDni(24652571);
         
         
-        Materia informatica = mat.buscarMateria(7);
+        Materia informatica = mat.buscarMateria(11);
         
         Inscripcion in = new Inscripcion(julio, informatica, 8);
 

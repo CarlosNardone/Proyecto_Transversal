@@ -180,7 +180,7 @@ public class AlumnoData {
         return alumno;
     }
     
-        public  Alumno buscarAlumnoPorDni(int dni){
+    public  Alumno buscarAlumnoPorDni(int dni){
         String sql = "SELECT idAlumno,dni, apellido, nombre, fechaNacimiento FROM alumno WHERE dni = ? AND estado = 1";
         Alumno alumno = null;
         
@@ -209,7 +209,7 @@ public class AlumnoData {
         return alumno;
     }
     
-                public List <Alumno> listarAlumnos(){
+    public List <Alumno> listarAlumnos(){
         String sql = "SELECT idAlumno,dni, apellido, nombre, fechaNacimiento FROM alumno WHERE estado = 1";
        ArrayList <Alumno> alumnos = new ArrayList<>();
         

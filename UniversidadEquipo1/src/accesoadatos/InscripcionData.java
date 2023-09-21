@@ -96,11 +96,35 @@ public class InscripcionData {
     }
 
     public List<Materia> obtenerMateriasNOCursadas(int id) {
-
+         
+        List<Materia> materias = new ArrayList <Materia>();
+        
+        String sql = "SELECT * FROM materia WHERE estado = 1 AND idMateria not in (SELECT idMateria FROM inscripcion WHERE idAlumno =?)";
+                
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            
+            
+            while(rs.next()){
+                Materia materia = new Materia();
+                materia.setIdMateria(rs.getInt("idMateria"));
+                materia.setNombre(rs.getString("nombre"));
+                materia.setAnioMateria(rs.getInt("año"));
+                materias.add(materia);
+            }
+            ps.close();
+            
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al obtener inscripciones." + ex.getMessage());
+        }
+        
+        
+        
         return obtenerMateriasCursadas(id);
     }
 
-    
     public void borrarInscripcionMateriaAlumno(int idAlumno, int idMateria){
         String sql = "DELETE FROM inscripcion WHERE idAlumno = ? AND idMateria = ?";
         try {
