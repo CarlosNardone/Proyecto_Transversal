@@ -77,7 +77,7 @@ public class AlumnoData {
             }else{
                 JOptionPane.showMessageDialog(null, "Alumno inexistente");
             }  
-//            ps.close();
+            ps.close();
             
             
         } catch (SQLException ex) {

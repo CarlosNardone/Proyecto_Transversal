@@ -9,6 +9,7 @@ import accesoadatos.AlumnoData;
 import entidades.Alumno;
 import java.sql.Date;
 import java.time.LocalDate;
+import java.time.ZoneId;
 import javax.swing.JOptionPane;
 
 /**
@@ -18,7 +19,7 @@ import javax.swing.JOptionPane;
 public class GestionDeAlumnosView extends javax.swing.JInternalFrame {
 
     private AlumnoData alu;
-    private Alumno alumno;
+    private Alumno alumno = null;
     
     /**
      * Creates new form GestionDeAlumnosView
@@ -56,7 +57,10 @@ public class GestionDeAlumnosView extends javax.swing.JInternalFrame {
         jbSalir = new javax.swing.JButton();
         jbBuscar = new javax.swing.JButton();
 
+        setClosable(true);
         setForeground(java.awt.Color.green);
+        setIconifiable(true);
+        setMaximizable(true);
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel1.setText("Alumno");
@@ -189,12 +193,9 @@ public class GestionDeAlumnosView extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jbSalirActionPerformed
 
     private void jbNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbNuevoActionPerformed
-        // TODO add your handling code here:
-        jtfApellido.setText("");
-        jtfDocumento.setText("");
-        jtfNombre.setText("");
-        jrbEstado.setSelected(false);
-        jdcFechaNacimiento.setDate(null);
+        limpiarCampos();
+        alumno = null;
+        
     }//GEN-LAST:event_jbNuevoActionPerformed
 
     private void jbBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBuscarActionPerformed
@@ -204,17 +205,16 @@ public class GestionDeAlumnosView extends javax.swing.JInternalFrame {
         try{ 
         documento = Integer.parseInt(jtfDocumento.getText());
         Alumno A = alu.buscarAlumnoPorDni(documento);
+        if(A !=null){
         jtfApellido.setText(A.getApellido());
         jtfDocumento.setText(Integer.toString(A.getDni()));
         jtfNombre.setText(A.getNombre());
         jrbEstado.setSelected(A.isActivo());
         LocalDate fechaNacimiento = A.getFechaNacimiento(); // Suponiendo que tengas un método para obtener la fecha de nacimiento en tu objeto Alumno
-         Date fechaNacimientoUtil = java.sql.Date.valueOf(fechaNacimiento);
-         jdcFechaNacimiento.setDate(fechaNacimientoUtil);
-    
-    }catch(NullPointerException ex){
-        JOptionPane.showMessageDialog(this, "Ingrese otro dni valido");
-    }catch(NumberFormatException nu){
+        Date fechaNacimientoUtil = java.sql.Date.valueOf(fechaNacimiento);
+        jdcFechaNacimiento.setDate(fechaNacimientoUtil);
+        }
+        }catch(NumberFormatException nu){
         JOptionPane.showMessageDialog(this, "Solo se permiten numeros en los campo dni y fecha");
     }
         
@@ -238,13 +238,34 @@ public class GestionDeAlumnosView extends javax.swing.JInternalFrame {
         int dni = Integer.parseInt(jtfDocumento.getText());
         String apellido = jtfApellido.getText();
         String nombre =jtfNombre.getText();
+        if(nombre.isEmpty()||apellido.isEmpty()){
+            
+            JOptionPane.showMessageDialog(this, "Los campos nombre y apellido no pueden estar vacios");
+            return;
+        }
+        
         boolean estado = jrbEstado.isSelected();
         java.util.Date utilDate = jdcFechaNacimiento.getDate();
-        java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
-        LocalDate fechaNacimiento = sqlDate.toLocalDate();
-        Alumno alumno = new Alumno(dni, apellido, nombre, fechaNacimiento, estado);
-        alu.guardarAlumno(alumno);
+        LocalDate fechaNacimiento = utilDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        
+//        java.util.Date utilDate = jdcFechaNacimiento.getDate();
+//        java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
+//        LocalDate fechaNacimiento = sqlDate.toLocalDate();
+        if(alumno == null){
+                alumno = new Alumno(dni, apellido, nombre, fechaNacimiento, estado);
+                alu.guardarAlumno(alumno);
+        }else{
+                alumno.setDni(dni);
+                alumno.setApellido(apellido);
+                alumno.setNombre(nombre);
+                alumno.setFechaNacimiento(fechaNacimiento);
+                
+               alu.modificarAlumno(alumno);
+                
+            
+        }   
         }catch(NumberFormatException ex){
+             
             JOptionPane.showMessageDialog(this, "Solo se permiten numeros en los campo dni y fecha");
         }
     }//GEN-LAST:event_jbGuardarActionPerformed
@@ -270,4 +291,13 @@ public class GestionDeAlumnosView extends javax.swing.JInternalFrame {
     private javax.swing.JTextField jtfDocumento;
     private javax.swing.JTextField jtfNombre;
     // End of variables declaration//GEN-END:variables
+
+    private void limpiarCampos(){
+        jtfApellido.setText("");
+        jtfDocumento.setText("");
+        jtfNombre.setText("");
+        jrbEstado.setSelected(false);
+        jdcFechaNacimiento.setDate(null);
+    }
+    
 }
