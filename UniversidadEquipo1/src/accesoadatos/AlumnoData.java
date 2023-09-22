@@ -113,7 +113,11 @@ public class AlumnoData {
         
         
     }   
-
+    
+    //Decidimos hacer el codigo buscar por DNI, ya que en la interfaz grafica sugerida
+    //en ninguna parte aparece para rellenar por ID, por eso decidimos hacerlo asi, igualmente
+    //dejamos el codigo sugerido comentado por si acaso
+    
     /*
     
         public void eliminarAlumno(int id){

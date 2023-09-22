@@ -92,7 +92,7 @@ public class MateriaData {
                 JOptionPane.showMessageDialog(null, "Materia inexistente");
                 System.out.println(exito);
             }
-            ps.close();
+//            ps.close();
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error de conexion");
             System.err.println(ex);
