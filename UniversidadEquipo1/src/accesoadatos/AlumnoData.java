@@ -14,8 +14,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -23,8 +21,6 @@ import javax.swing.JOptionPane;
  * @author Carlos
  */
 public class AlumnoData {
-
-//    private int idAlumno;
     private Connection con = null;
 
     public AlumnoData() {
@@ -33,8 +29,6 @@ public class AlumnoData {
     }
 
     public void guardarAlumno(Alumno alumno) {
-//        String sql = "INSERT INTO alumno (dni, apellido, nombre, fechaNacimiento, estado) " 
-//                + "VALUES (?,?,?,?,?)";
 
         try {
 
@@ -68,14 +62,7 @@ public class AlumnoData {
         String sql = "UPDATE alumno SET  dni = ?, apellido = ?, nombre = ?, fechaNacimiento = ? "
                 + "WHERE IdAlumno = ?";
         PreparedStatement ps = null;
-
-
-
-        
         try {
-//            PreparedStatement ps = con.prepareStatement("UPDATE alumno SET dni = ?, apellido = ?, "
-//                    + "nombre = ? ,fechaNacimiento = ? "
-//                    + "WHERE IdAlumno = ?", Statement.RETURN_GENERATED_KEYS);
             ps = con.prepareStatement(sql);
             ps.setInt(1, alumno.getDni());
             ps.setString(2, alumno.getApellido());
@@ -89,8 +76,7 @@ public class AlumnoData {
                 JOptionPane.showMessageDialog(null, "Alumno Modificado");
             }else{
                 JOptionPane.showMessageDialog(null, "Alumno inexistente");
-            }
-            
+            }  
 //            ps.close();
             
             
@@ -150,7 +136,7 @@ public class AlumnoData {
     }   
     */
 
-    public Alumno buscarAlumnoporDni(int id){
+    public Alumno buscarAlumno(int id){
         String sql = "SELECT dni, apellido, nombre, fechaNacimiento "
                 + "FROM alumno WHERE idAlumno = ? AND estado = 1";
         Alumno alumno = null;

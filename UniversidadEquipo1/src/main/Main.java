@@ -13,8 +13,6 @@ import entidades.Alumno;
 import entidades.Inscripcion;
 import entidades.Materia;
 import java.sql.*;
-import java.time.LocalDate;
-import java.time.Month;
 
 /**
  *
@@ -89,10 +87,23 @@ public class Main {
         
         Inscripcion in = new Inscripcion(julio, informatica, 8);
 
-        insc.guardarInscripcion(in);
+//        insc.guardarInscripcion(in);
 //        insc.actualizarNota(4, 8, 5);
 //        insc.borrarInscripcionMateriaAlumno(4, 8);
+        
+//        for(Inscripcion inscripcion:insc.obtenerInscripcionesPorAlumno(4)){
+//            System.out.println("id "+inscripcion.getIdInscripcion());
+//            System.out.println("Apellido " +inscripcion.getAlumno().getApellido());
+//            System.out.println("Materia " +inscripcion.getMateria().getNombre());  
+//        }
+        
 
+
+        for(Materia materia:insc.obtenerMateriasNOCursadas(4)){
+            System.out.println("Nombre " + materia.getNombre());
+        }
+        
+        
         
     }
 }

@@ -8,11 +8,7 @@ package vistas;
 import accesoadatos.AlumnoData;
 import entidades.Alumno;
 import java.sql.Date;
-import java.time.Instant;
 import java.time.LocalDate;
-import java.time.Month;
-import java.time.ZoneId;
-import java.time.format.DateTimeFormatter;
 import javax.swing.JOptionPane;
 
 /**
@@ -199,8 +195,6 @@ public class GestionDeAlumnosView extends javax.swing.JInternalFrame {
         jtfNombre.setText("");
         jrbEstado.setSelected(false);
         jdcFechaNacimiento.setDate(null);
-//        jrbEstado.setDisplayedMnemonicIndex(0);
-//        jdcFechaNacimiento.set();
     }//GEN-LAST:event_jbNuevoActionPerformed
 
     private void jbBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBuscarActionPerformed
@@ -209,9 +203,6 @@ public class GestionDeAlumnosView extends javax.swing.JInternalFrame {
         
         try{ 
         documento = Integer.parseInt(jtfDocumento.getText());
-        
-//        MenuPrincipalView.alu();
-
         Alumno A = alu.buscarAlumnoPorDni(documento);
         jtfApellido.setText(A.getApellido());
         jtfDocumento.setText(Integer.toString(A.getDni()));
@@ -251,13 +242,6 @@ public class GestionDeAlumnosView extends javax.swing.JInternalFrame {
         java.util.Date utilDate = jdcFechaNacimiento.getDate();
         java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
         LocalDate fechaNacimiento = sqlDate.toLocalDate();
-//        Date date = (Date) jdcFechaNacimiento.getDate();
-//        Instant inst = date.toInstant();
-//        LocalDate fechaNacimiento = inst.atZone(ZoneId.systemDefault()).toLocalDate();
-        
-//        String fecha = jdcFechaNacimiento.toString();
-//        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");  
-//        LocalDate fechaNacimiento = LocalDate.parse(fecha, formatter);
         Alumno alumno = new Alumno(dni, apellido, nombre, fechaNacimiento, estado);
         alu.guardarAlumno(alumno);
         }catch(NumberFormatException ex){
