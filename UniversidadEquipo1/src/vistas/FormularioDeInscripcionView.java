@@ -13,6 +13,7 @@ import entidades.Inscripcion;
 import entidades.Materia;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -260,6 +261,8 @@ public class FormularioDeInscripcionView extends javax.swing.JInternalFrame {
             inscData.guardarInscripcion(i);
             borrarFilaTabla();
             
+        }else{
+            JOptionPane.showMessageDialog(this, "Usted debe seleccionar una fila de la tabla");
         }
     }//GEN-LAST:event_jbInscribirActionPerformed
 
@@ -272,9 +275,9 @@ public class FormularioDeInscripcionView extends javax.swing.JInternalFrame {
             int idMateria = (Integer) modelo.getValueAt(filaSeleccionada, 0);
             
             inscData.borrarInscripcionMateriaAlumno(a.getIdAlumno(), idMateria);
-            borrarFilaTabla();
-            
-            
+            borrarFilaTabla();      
+        }else{
+            JOptionPane.showMessageDialog(this, "Usted debe seleccionar una fila de la tabla");
         }
     }//GEN-LAST:event_jbAnularActionPerformed
 
