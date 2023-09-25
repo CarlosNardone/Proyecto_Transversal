@@ -128,6 +128,7 @@ public class InscripcionData {
 
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al obtener inscripciones." + ex.getMessage());
+            ex.printStackTrace();
         }
 
         return materias;
