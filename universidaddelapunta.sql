@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 22-09-2023 a las 00:31:12
+-- Tiempo de generación: 25-09-2023 a las 02:10:48
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -42,7 +42,7 @@ CREATE TABLE `alumno` (
 
 INSERT INTO `alumno` (`idAlumno`, `dni`, `apellido`, `nombre`, `fechaNacimiento`, `estado`) VALUES
 (4, 37577100, 'Nardone', 'Carlos', '1994-11-22', 1),
-(5, 567543553, 'Rodrigues', 'Juan Eduardo', '1986-12-23', 0),
+(5, 37064864, 'Rodrigues', 'Juan Ariel', '1986-12-23', 1),
 (7, 45600100, 'Fernandes', 'Juan Eduardo', '1986-12-23', 0),
 (8, 24652571, 'Bazzoni', 'Diego', '1976-01-23', 1),
 (9, 30068183, 'Avila', 'Mauricio', '1983-04-10', 1),
@@ -50,7 +50,13 @@ INSERT INTO `alumno` (`idAlumno`, `dni`, `apellido`, `nombre`, `fechaNacimiento`
 (11, 6469646, 'Sarmiento', 'Juan', '1996-06-11', 1),
 (12, 568323445, 'Robledo', 'Roberto', '1987-02-01', 1),
 (15, 576242324, 'Rodrigues', 'Alvaro', '1992-05-12', 0),
-(16, 32824319, 'Sosa', 'Julio', '1930-09-24', 1);
+(16, 32824319, 'Sosa', 'Julio', '1930-09-24', 1),
+(17, 1231312, 'Sosa', 'German Ariel', '2001-09-08', 1),
+(18, 32323132, 'Esquivel', 'Ernesto', '1992-09-12', 1),
+(23, 323231, 'Esquivel', 'pedro', '1992-09-12', 1),
+(28, 3243213, 'Saviola', 'Raul ', '1992-09-11', 1),
+(36, 12414124, 'Garcia', 'Gaston', '1992-09-12', 0),
+(40, 31231, 'dsd', 'ds', '2023-09-09', 1);
 
 -- --------------------------------------------------------
 
@@ -91,7 +97,7 @@ CREATE TABLE `materia` (
 --
 
 INSERT INTO `materia` (`idMateria`, `nombre`, `año`, `estado`) VALUES
-(5, 'Matematica', 1, 1),
+(5, 'Geografia 1', 1, 1),
 (6, 'Ingles', 2, 0),
 (7, 'Informatica', 3, 1),
 (8, 'Lengua', 3, 1),
@@ -99,7 +105,10 @@ INSERT INTO `materia` (`idMateria`, `nombre`, `año`, `estado`) VALUES
 (10, 'Educacion Fisica 2', 2, 0),
 (11, 'Biologia 6', 6, 1),
 (12, 'Fisica-Quimica 4', 4, 1),
-(13, 'Geografia- Historia 4', 4, 1);
+(13, 'Geografia- Historia 4', 4, 1),
+(14, 'Matematica 3', 3, 1),
+(15, 'dasda', 10, 0),
+(16, 'asdasda', 3, 0);
 
 --
 -- Índices para tablas volcadas
@@ -109,7 +118,8 @@ INSERT INTO `materia` (`idMateria`, `nombre`, `año`, `estado`) VALUES
 -- Indices de la tabla `alumno`
 --
 ALTER TABLE `alumno`
-  ADD PRIMARY KEY (`idAlumno`);
+  ADD PRIMARY KEY (`idAlumno`),
+  ADD UNIQUE KEY `dni` (`dni`);
 
 --
 -- Indices de la tabla `inscripcion`
@@ -133,19 +143,19 @@ ALTER TABLE `materia`
 -- AUTO_INCREMENT de la tabla `alumno`
 --
 ALTER TABLE `alumno`
-  MODIFY `idAlumno` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `idAlumno` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
 -- AUTO_INCREMENT de la tabla `inscripcion`
 --
 ALTER TABLE `inscripcion`
-  MODIFY `idInscripto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `idInscripto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de la tabla `materia`
 --
 ALTER TABLE `materia`
-  MODIFY `idMateria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `idMateria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- Restricciones para tablas volcadas
