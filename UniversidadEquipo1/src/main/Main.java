@@ -13,6 +13,7 @@ import entidades.Alumno;
 import entidades.Inscripcion;
 import entidades.Materia;
 import java.sql.*;
+import java.time.LocalDate;
 
 /**
  *
@@ -27,11 +28,11 @@ public class Main {
         // TODO code application logic here
         Connection con = Conexion.getConexion();
 
-//     Materia matematicas = new Materia(5,"Matematica", 1 ,true);
+     Materia religion = new Materia(5,"Religion", 10 ,true);
 //     Materia ingles = new Materia("Ingles", 2 ,true);
 //     Materia informatica = new Materia("Informatica", 4, true);
 //     Materia lengua = new Materia(8,"Lengua", 3, true);
-//     MateriaData mat = new MateriaData();
+     MateriaData mat = new MateriaData();
 //     for(Materia materia: mat.listarMaterias()){
 //         System.out.println("Nombre de la materia: " +materia.getNombre()); 
 //         System.out.println("Año de la materia: " +materia.getAnioMateria()); 
@@ -41,7 +42,8 @@ public class Main {
 //     mat.guardarMateria(matematicas);
 //     mat.guardarMateria(ingles);
 //     mat.guardarMateria(lengua);
-//      mat.modificarMateria(matematicas);
+      mat.modificarMateria(religion);
+      
 //      mat.eliminarMateria(6);
 //     Materia materiaEncontrada = mat.buscarMateria(7);
 //     if (materiaEncontrada != null){
@@ -52,11 +54,11 @@ public class Main {
 //    }
 //       Alumno carlos = new Alumno(37577100,"Nardone", "Carlos", LocalDate.of(1994, 11, 22), true);
         //Alumno franco = new Alumno(433132332,"Lopez", "Franco", LocalDate.of(2001, 10, 21), true);
-//        Alumno eduardo = new Alumno(5, 567543553, "Rodrigues", "Juan Eduardo", LocalDate.of(1986, 12, 23), true);
-//        Alumno diego = new Alumno (24652571, "Bazzoni","Diego",LocalDate.of(1976, 1, 23), true);
-//        Alumno mauricio = new Alumno (30068183, "Avila", "Mauricio", LocalDate.of(1983,4,10), true);
-        // AlumnoData alu = new AlumnoData();
-        //alu.guardarAlumno(franco);
+//        Alumno eduardo = new Alumno(5, 37064864, "Rodrigues", "Juan Ariel", LocalDate.of(1986, 12, 23), true);
+////        Alumno diego = new Alumno (24652571, "Bazzoni","Diego",LocalDate.of(1976, 1, 23), true);
+////        Alumno mauricio = new Alumno (30068183, "Avila", "Mauricio", LocalDate.of(1983,4,10), true);
+//         AlumnoData alu = new AlumnoData();
+//        //alu.guardarAlumno(franco);
 //        alu.modificarAlumno(eduardo);
 //        alu.eliminarAlumno(5);
 //       Alumno alumnoEncontrado = alu.buscarAlumno(5);
@@ -76,16 +78,16 @@ public class Main {
 //
 //       }
 
-        AlumnoData aludata = new AlumnoData();
-        MateriaData mat = new MateriaData();
-        InscripcionData insc = new InscripcionData();
-
-        Alumno julio = aludata.buscarAlumnoPorDni(24652571);
-        
-        
-        Materia informatica = mat.buscarMateria(11);
-        
-        Inscripcion in = new Inscripcion(julio, informatica, 8);
+//        AlumnoData aludata = new AlumnoData();
+//        MateriaData mat = new MateriaData();
+//        InscripcionData insc = new InscripcionData();
+//
+//        Alumno julio = aludata.buscarAlumnoPorDni(24652571);
+//        
+//        
+//        Materia informatica = mat.buscarMateria(11);
+//        
+//        Inscripcion in = new Inscripcion(julio, informatica, 8);
 
 //        insc.guardarInscripcion(in);
 //        insc.actualizarNota(4, 8, 5);
@@ -99,11 +101,11 @@ public class Main {
         
 
 
-        for(Materia materia:insc.obtenerMateriasNOCursadas(4)){
-            System.out.println("Nombre " + materia.getNombre());
+//        for(Materia materia:insc.obtenerMateriasNOCursadas(4)){
+//            System.out.println("Nombre " + materia.getNombre());
         }
         
         
         
     }
-}
+

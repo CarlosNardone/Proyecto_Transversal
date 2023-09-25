@@ -8,6 +8,7 @@ package vistas;
 import accesoadatos.AlumnoData;
 import accesoadatos.MateriaData;
 import entidades.Alumno;
+import entidades.Materia;
 
 /**
  *
@@ -18,6 +19,7 @@ public class MenuPrincipalView extends javax.swing.JFrame {
     private Alumno alum;
     private AlumnoData alu;
     private MateriaData mat;
+    private Materia materia;
     private int documento;
 
     /**
@@ -27,7 +29,8 @@ public class MenuPrincipalView extends javax.swing.JFrame {
         initComponents();
         alu = new AlumnoData();
         mat = new MateriaData();
-
+        materia = new Materia();
+        
     }
 
     /**
@@ -167,7 +170,7 @@ public class MenuPrincipalView extends javax.swing.JFrame {
         // TODO add your handling code here:
                 jdEscritorio.removeAll();
         jdEscritorio.repaint();
-        GestionDeMateriasView gdm = new GestionDeMateriasView(mat);
+        GestionDeMateriasView gdm = new GestionDeMateriasView(mat,materia);
         gdm.setVisible(true);
         jdEscritorio.add(gdm);
         jdEscritorio.moveToFront(gdm);
@@ -185,7 +188,7 @@ public class MenuPrincipalView extends javax.swing.JFrame {
 
     private void jmiManipNotasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiManipNotasActionPerformed
         // TODO add your handling code here:
-                                jdEscritorio.removeAll();
+         jdEscritorio.removeAll();
         jdEscritorio.repaint();
         CargaDeNotasView cdn = new CargaDeNotasView();
         cdn.setVisible(true);
@@ -195,7 +198,7 @@ public class MenuPrincipalView extends javax.swing.JFrame {
 
     private void jmiAlumnoXMateriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiAlumnoXMateriaActionPerformed
         // TODO add your handling code here:
-                                        jdEscritorio.removeAll();
+        jdEscritorio.removeAll();
         jdEscritorio.repaint();
         AlumnosPorMateriaView axm = new AlumnosPorMateriaView();
         axm.setVisible(true);

@@ -19,12 +19,13 @@ import javax.swing.JOptionPane;
 public class GestionDeAlumnosView extends javax.swing.JInternalFrame {
 
     private AlumnoData alu;
-    private Alumno alumno = null;
+    private Alumno alumno;
+    private Alumno alumnoActual =null;
     
     /**
      * Creates new form GestionDeAlumnosView
      */
-    public GestionDeAlumnosView(AlumnoData alu, Alumno alumno) {
+    public GestionDeAlumnosView(AlumnoData alu, Alumno alumno){
         initComponents();
         this.alu = alu;
         this.alumno = alumno;
@@ -204,13 +205,13 @@ public class GestionDeAlumnosView extends javax.swing.JInternalFrame {
         
         try{ 
         documento = Integer.parseInt(jtfDocumento.getText());
-        Alumno A = alu.buscarAlumnoPorDni(documento);
-        if(A !=null){
-        jtfApellido.setText(A.getApellido());
-        jtfDocumento.setText(Integer.toString(A.getDni()));
-        jtfNombre.setText(A.getNombre());
-        jrbEstado.setSelected(A.isActivo());
-        LocalDate fechaNacimiento = A.getFechaNacimiento(); // Suponiendo que tengas un método para obtener la fecha de nacimiento en tu objeto Alumno
+        Alumno alumno = alu.buscarAlumnoPorDni(documento);
+        if(alumno !=null){
+        jtfApellido.setText(alumno.getApellido());
+        jtfDocumento.setText(Integer.toString(alumno.getDni()));
+        jtfNombre.setText(alumno.getNombre());
+        jrbEstado.setSelected(alumno.isActivo());
+        LocalDate fechaNacimiento = alumno.getFechaNacimiento(); // Suponiendo que tengas un método para obtener la fecha de nacimiento en tu objeto Alumno
         Date fechaNacimientoUtil = java.sql.Date.valueOf(fechaNacimiento);
         jdcFechaNacimiento.setDate(fechaNacimientoUtil);
         }
@@ -251,16 +252,18 @@ public class GestionDeAlumnosView extends javax.swing.JInternalFrame {
 //        java.util.Date utilDate = jdcFechaNacimiento.getDate();
 //        java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
 //        LocalDate fechaNacimiento = sqlDate.toLocalDate();
-        if(alumno == null){
-                alumno = new Alumno(dni, apellido, nombre, fechaNacimiento, estado);
-                alu.guardarAlumno(alumno);
-        }else{
-                alumno.setDni(dni);
-                alumno.setApellido(apellido);
-                alumno.setNombre(nombre);
-                alumno.setFechaNacimiento(fechaNacimiento);
+         alumnoActual = alu.buscarAlumnoPorDni(dni);      
+         if(alumnoActual == null){
+                alumnoActual = new Alumno(dni, apellido, nombre, fechaNacimiento, estado);
+                alu.guardarAlumno(alumnoActual);
+        }else {
+                alumnoActual.setDni(dni);
+                alumnoActual.setApellido(apellido);
+                alumnoActual.setNombre(nombre);
+                alumnoActual.setFechaNacimiento(fechaNacimiento);
                 
-               alu.modificarAlumno(alumno);
+                
+               alu.modificarAlumno(alumnoActual);
                 
             
         }   

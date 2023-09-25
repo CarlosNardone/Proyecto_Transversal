@@ -16,12 +16,14 @@ import javax.swing.JOptionPane;
 public class GestionDeMateriasView extends javax.swing.JInternalFrame {
 
     private MateriaData mat;
+    private Materia materiaActual= null;
 
     /**
      * Creates new form GestionDeMateriasView
      */
-    public GestionDeMateriasView(MateriaData mat) {
+    public GestionDeMateriasView(MateriaData mat, Materia materiaActual) {
         this.mat = mat;
+        this.materiaActual = materiaActual;
         initComponents();
     }
 
@@ -230,8 +232,15 @@ public class GestionDeMateriasView extends javax.swing.JInternalFrame {
         String nombre = jtfNombre.getText();
         int año = Integer.parseInt(jtfAnio.getText());
         boolean estado = jrbEstado.isSelected();
-        Materia materia = new Materia(id, nombre, año, estado);
-        mat.guardarMateria(materia);
+        materiaActual = mat.buscarMateria(id);
+            if(materiaActual == null){
+            materiaActual = new Materia(id, nombre, año, estado);
+            mat.guardarMateria(materiaActual);
+        }else{
+            materiaActual.setNombre(nombre);
+            materiaActual.setAnioMateria(año);
+            mat.modificarMateria(materiaActual);
+        }
         }catch(NumberFormatException ex){
             JOptionPane.showMessageDialog(null, "Solo se pueden ingresar numeros en los campos año y codigo");
         }
