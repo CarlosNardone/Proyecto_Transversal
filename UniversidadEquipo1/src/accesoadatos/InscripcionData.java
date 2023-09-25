@@ -67,7 +67,7 @@ public class InscripcionData {
                 Materia mat = matData.buscarMateria(rs.getInt("idMateria"));
                 insc.setAlumno(alu);
                 insc.setMateria(mat);
-                insc.setNota(rs.getDouble("nota"));
+                insc.setNota(rs.getInt("nota"));
                 cursadas.add(insc);
             }
             ps.close();
@@ -93,7 +93,7 @@ public class InscripcionData {
                 Materia mat = matData.buscarMateria(rs.getInt("idMateria"));
                 insc.setAlumno(alu);
                 insc.setMateria(mat);
-                insc.setNota(rs.getDouble("nota"));
+                insc.setNota(rs.getInt("nota"));
                 cursadas.add(insc);
             }
             ps.close();
@@ -178,11 +178,11 @@ public class InscripcionData {
         }
     }
 
-    public void actualizarNota(int idAlumno, int idMateria, double nota) {
+    public void actualizarNota(int idAlumno, int idMateria, int nota) {
         String sql = "UPDATE inscripcion SET nota = ? WHERE idAlumno = ? AND idMateria = ?";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setDouble(1, nota);
+            ps.setInt(1, nota);
             ps.setInt(2, idAlumno);
             ps.setInt(3, idMateria);
 

@@ -326,7 +326,7 @@ public class FormularioDeInscripcionView extends javax.swing.JInternalFrame {
     private void cargarDatosNoIncriptas(){
         //borrarFilasTablas();
         Alumno selec = (Alumno) jcbSeleccionAlumno.getSelectedItem();
-        listaM = (ArrayList) inscData.obtenerMateriasCursadas(selec.getIdAlumno());
+        listaM = (ArrayList) inscData.obtenerMateriasNOCursadas(selec.getIdAlumno());
         for(Materia m: listaM){
         modelo.addRow(new Object[]{m.getIdMateria(), m.getNombre(), m.getAnioMateria()});  
     }
