@@ -68,7 +68,7 @@ public class MenuPrincipalView extends javax.swing.JFrame {
             .addGap(0, 486, Short.MAX_VALUE)
         );
 
-        jMenuAlumno.setText("Alumno");
+        jMenuAlumno.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/user.png"))); // NOI18N
 
         jmiFormularioA.setText("Formulario de Alumno");
         jmiFormularioA.addActionListener(new java.awt.event.ActionListener() {
@@ -80,7 +80,7 @@ public class MenuPrincipalView extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenuAlumno);
 
-        jMenuMateria.setText("Materia");
+        jMenuMateria.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/graduation-cap.png"))); // NOI18N
 
         jmiFormularioMateria.setText("Formulario Materia");
         jmiFormularioMateria.addActionListener(new java.awt.event.ActionListener() {
@@ -92,7 +92,7 @@ public class MenuPrincipalView extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenuMateria);
 
-        jMenuAdministracion.setText("Administracion");
+        jMenuAdministracion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/users.png"))); // NOI18N
 
         jmiManejoinscripciones.setText("Manejo de inscripciones");
         jmiManejoinscripciones.addActionListener(new java.awt.event.ActionListener() {
@@ -112,7 +112,7 @@ public class MenuPrincipalView extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenuAdministracion);
 
-        jMenuConsultas.setText("Consultas");
+        jMenuConsultas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/world.png"))); // NOI18N
 
         jmiAlumnoXMateria.setText("Alumnos por Materia");
         jmiAlumnoXMateria.addActionListener(new java.awt.event.ActionListener() {
@@ -124,7 +124,7 @@ public class MenuPrincipalView extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenuConsultas);
 
-        jMenuSalir.setText("Salir");
+        jMenuSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/exit.png"))); // NOI18N
         jMenuSalir.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jMenuSalirMouseClicked(evt);

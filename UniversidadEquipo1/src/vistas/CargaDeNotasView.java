@@ -191,7 +191,7 @@ public class CargaDeNotasView extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(this, "Solo puedes poner numeros enteros en la tabla");
         }catch(ClassCastException cc){
             JOptionPane.showMessageDialog(this, "Tienes que terminar de editar la tabla, dale al boton Enter cuando termines de editar.");
-            System.err.println(cc);
+//            System.err.println(cc);
         }        
 //        int filaSeleccionada = jtCargadeNotas.getSelectedRow();
 //        if(filaSeleccionada != -1){
