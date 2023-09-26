@@ -249,9 +249,6 @@ public class GestionDeAlumnosView extends javax.swing.JInternalFrame {
         java.util.Date utilDate = jdcFechaNacimiento.getDate();
         LocalDate fechaNacimiento = utilDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
         
-//        java.util.Date utilDate = jdcFechaNacimiento.getDate();
-//        java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
-//        LocalDate fechaNacimiento = sqlDate.toLocalDate();
          alumnoActual = alu.buscarAlumnoPorDni(dni);      
          if(alumnoActual == null){
                 alumnoActual = new Alumno(dni, apellido, nombre, fechaNacimiento, estado);

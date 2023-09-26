@@ -35,7 +35,6 @@ public class CargaDeNotasView extends javax.swing.JInternalFrame {
         initComponents();
         inscData = new InscripcionData();
         aData = new AlumnoData();
-//        listaA = (ArrayList<Alumno>)aData.listarAlumnos();
         listaA = aData.listarAlumnos();
         listaI = inscData.obtenerInscripciones();
         modelo = new DefaultTableModel();
@@ -173,6 +172,7 @@ public class CargaDeNotasView extends javax.swing.JInternalFrame {
 
     private void jbGuardarNotaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGuardarNotaActionPerformed
         //borrarFilaTabla();
+        try{
         int filaSeleccionada = jtCargadeNotas.getSelectedRow();
         if (filaSeleccionada != -1) {
         Alumno a = (Alumno) jCboxAlumno.getSelectedItem();
@@ -186,7 +186,13 @@ public class CargaDeNotasView extends javax.swing.JInternalFrame {
         }else{
             JOptionPane.showMessageDialog(this, "Usted debe seleccionar una fila de la tabla");
         }
-        
+
+        }catch(NumberFormatException ex){
+            JOptionPane.showMessageDialog(this, "Solo puedes poner numeros enteros en la tabla");
+        }catch(ClassCastException cc){
+            JOptionPane.showMessageDialog(this, "Tienes que terminar de editar la tabla, dale al boton Enter cuando termines de editar.");
+            System.err.println(cc);
+        }        
 //        int filaSeleccionada = jtCargadeNotas.getSelectedRow();
 //        if(filaSeleccionada != -1){
 //            Alumno a = (Alumno)jCboxAlumno.getSelectedItem();
