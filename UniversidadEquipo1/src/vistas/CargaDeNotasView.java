@@ -16,21 +16,19 @@ import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-
-
 public class CargaDeNotasView extends javax.swing.JInternalFrame {
 
-    private List<Materia>listaM;
+    private List<Materia> listaM;
     private List<Alumno> listaA;
-    private List<Inscripcion>listaI;
-    
+    private List<Inscripcion> listaI;
+
     private InscripcionData inscData;
     private MateriaData mData;
     private AlumnoData aData;
     private Materia materia;
-    
+
     private DefaultTableModel modelo;
-    
+
     public CargaDeNotasView() {
         initComponents();
         inscData = new InscripcionData();
@@ -38,7 +36,7 @@ public class CargaDeNotasView extends javax.swing.JInternalFrame {
         listaA = aData.listarAlumnos();
         listaI = inscData.obtenerInscripciones();
         modelo = new DefaultTableModel();
-        
+
         mData = new MateriaData();
         materia = new Materia();
         cargarAlumnos();
@@ -172,41 +170,29 @@ public class CargaDeNotasView extends javax.swing.JInternalFrame {
 
     private void jbGuardarNotaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGuardarNotaActionPerformed
         //borrarFilaTabla();
-        try{
-        int filaSeleccionada = jtCargadeNotas.getSelectedRow();
-        if (filaSeleccionada != -1) {
-        Alumno a = (Alumno) jCboxAlumno.getSelectedItem();
-        int idMateria = (Integer) modelo.getValueAt(filaSeleccionada, 0);
-        String notaString = (String) modelo.getValueAt(filaSeleccionada, 2);
-        int nota = Integer.parseInt(notaString);
+        try {
+            int filaSeleccionada = jtCargadeNotas.getSelectedRow();
+            if (filaSeleccionada != -1) {
+                Alumno a = (Alumno) jCboxAlumno.getSelectedItem();
+                int idMateria = (Integer) modelo.getValueAt(filaSeleccionada, 0);
+                String notaString = (String) modelo.getValueAt(filaSeleccionada, 2);
+                int nota = Integer.parseInt(notaString);
 //       int nota = (Integer) modelo.getValueAt(filaSeleccionada, 2);
 
-       inscData.actualizarNota(a.getIdAlumno(), idMateria, nota);
-       
-        }else{
-            JOptionPane.showMessageDialog(this, "Usted debe seleccionar una fila de la tabla");
-        }
+                inscData.actualizarNota(a.getIdAlumno(), idMateria, nota);
 
-        }catch(NumberFormatException ex){
+            } else {
+                JOptionPane.showMessageDialog(this, "Usted debe seleccionar una fila de la tabla");
+            }
+
+        } catch (NumberFormatException ex) {
             JOptionPane.showMessageDialog(this, "Solo puedes poner numeros enteros en la tabla");
-        }catch(ClassCastException cc){
+        } catch (ClassCastException cc) {
             JOptionPane.showMessageDialog(this, "Tienes que terminar de editar la tabla, dale al boton Enter cuando termines de editar.");
 //            System.err.println(cc);
-        }        
-//        int filaSeleccionada = jtCargadeNotas.getSelectedRow();
-//        if(filaSeleccionada != -1){
-//            Alumno a = (Alumno)jCboxAlumno.getSelectedItem();
-//            int idMateria =(Integer) modelo.getValueAt(filaSeleccionada, 0);
-//            String nombreMateria = (String) modelo.getValueAt(filaSeleccionada, 1);
-//            int nota = Integer.parseInt((String) modelo.getValueAt(filaSeleccionada, 2));
-////            int nota = (Integer) modelo.getValueAt(filaSeleccionada, 2);
-////            Materia m = new Materia(idMateria, nombreMateria, anio,true);
-////            Materia m =new Materia(idMateria, nombreMateria);
-////            Inscripcion i = new Inscripcion (a, m, 0);
-//            
-//            inscData.actualizarNota(idMateria, a.getIdAlumno(), nota);
-//        }
-        
+        }
+
+
     }//GEN-LAST:event_jbGuardarNotaActionPerformed
 
 
@@ -220,48 +206,42 @@ public class CargaDeNotasView extends javax.swing.JInternalFrame {
     private javax.swing.JButton jbSalir;
     private javax.swing.JTable jtCargadeNotas;
     // End of variables declaration//GEN-END:variables
-private void cargarAlumnos(){
-         for(Alumno item:listaA){
-             jCboxAlumno.addItem(item);
-     } 
-}
-        private void armarCabeceraTabla(){
+private void cargarAlumnos() {
+        for (Alumno item : listaA) {
+            jCboxAlumno.addItem(item);
+        }
+    }
+
+    private void armarCabeceraTabla() {
         ArrayList<Object> filaCabecera = new ArrayList<>();
         filaCabecera.add("Codigo");
         filaCabecera.add("Nombre");
         filaCabecera.add("Nota");
-        for(Object it: filaCabecera){
+        for (Object it : filaCabecera) {
             modelo.addColumn(it);
         }
         jtCargadeNotas.setModel(modelo);
-        
-}
-        private void borrarFilaTabla(){
-        int indice = modelo.getRowCount() -1;
-        for(int i = indice;i>= 0; i--){
+
+    }
+
+    private void borrarFilaTabla() {
+        int indice = modelo.getRowCount() - 1;
+        for (int i = indice; i >= 0; i--) {
             modelo.removeRow(i);
         }
     }
-    
-        private void cargarDatosNotasMaterias(){
+
+    private void cargarDatosNotasMaterias() {
         //borrarFilasTablas();
         Alumno selec = (Alumno) jCboxAlumno.getSelectedItem();
         listaI = (ArrayList) inscData.obtenerInscripcionesPorAlumno(selec.getIdAlumno());
         for (Inscripcion inscripcion : listaI) {
-        Materia materia = inscripcion.getMateria();
-        int idMateria = materia.getIdMateria();
-        String nombreMateria = materia.getNombre();
-        int nota = inscripcion.getNota();
-        modelo.addRow(new Object[]{idMateria, nombreMateria, nota});
-//        for(Materia m: listaM){
-//        modelo.addRow(new Object[]{m.getIdMateria(), m.getNombre(), m.getAnioMateria()});  
+            Materia materia = inscripcion.getMateria();
+            int idMateria = materia.getIdMateria();
+            String nombreMateria = materia.getNombre();
+            int nota = inscripcion.getNota();
+            modelo.addRow(new Object[]{idMateria, nombreMateria, nota});
+        }
     }
-    }
-
-
-
-
-
 
 }
-

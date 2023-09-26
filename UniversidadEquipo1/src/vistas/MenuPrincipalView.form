@@ -121,16 +121,15 @@
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="jdEscritorio" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="32767" attributes="0"/>
-          </Group>
+          <Component id="jdEscritorio" alignment="1" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
     <Container class="javax.swing.JDesktopPane" name="jdEscritorio">
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_CreateCodePre" type="java.lang.String" value="//ImageIcon icono = new ImageIcon(getClass().getResource(&quot;/UniversidadEquipo1/recursos/universidad.jpg&quot;));&#xa;&#xa;//Image miImagen = icono.getImage();"/>
+      </AuxValues>
 
       <Layout>
         <DimensionLayout dim="0">
@@ -140,7 +139,7 @@
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <EmptySpace min="0" pref="486" max="32767" attributes="0"/>
+              <EmptySpace min="0" pref="498" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
       </Layout>

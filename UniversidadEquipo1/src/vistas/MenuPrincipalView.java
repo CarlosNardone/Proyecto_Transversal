@@ -9,6 +9,10 @@ import accesoadatos.AlumnoData;
 import accesoadatos.MateriaData;
 import entidades.Alumno;
 import entidades.Materia;
+import java.awt.Graphics;
+import java.awt.Image;
+import javax.swing.ImageIcon;
+
 
 /**
  *
@@ -27,6 +31,8 @@ public class MenuPrincipalView extends javax.swing.JFrame {
      */
     public MenuPrincipalView() {
         initComponents();
+//        this.setLocationRelativeTo(null);
+//        this.setSize(500, 520);
         alu = new AlumnoData();
         mat = new MateriaData();
         materia = new Materia();
@@ -42,6 +48,9 @@ public class MenuPrincipalView extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        //ImageIcon icono = new ImageIcon(getClass().getResource("/UniversidadEquipo1/recursos/universidad.jpg"));
+
+        //Image miImagen = icono.getImage();
         jdEscritorio = new javax.swing.JDesktopPane();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenuAlumno = new javax.swing.JMenu();
@@ -65,7 +74,7 @@ public class MenuPrincipalView extends javax.swing.JFrame {
         );
         jdEscritorioLayout.setVerticalGroup(
             jdEscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 486, Short.MAX_VALUE)
+            .addGap(0, 498, Short.MAX_VALUE)
         );
 
         jMenuAlumno.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/user.png"))); // NOI18N
@@ -142,10 +151,7 @@ public class MenuPrincipalView extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jdEscritorio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jdEscritorio, javax.swing.GroupLayout.Alignment.TRAILING)
         );
 
         pack();

@@ -61,8 +61,6 @@ public class AlumnoData {
     public void modificarAlumno(Alumno alumno){
         String sql = "UPDATE alumno SET  dni = ?, apellido = ?, nombre = ?, fechaNacimiento = ?, estado =? "
                 + "WHERE IdAlumno = ?";
-//            String sql = "UPDATE alumno SET apellido = ?, nombre = ?, fechaNacimiento = ?, estado =? "
-//                + "WHERE dni = ?";
         PreparedStatement ps = null;
         try {
             ps = con.prepareStatement(sql);
