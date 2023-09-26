@@ -28,11 +28,11 @@ public class Main {
         // TODO code application logic here
         Connection con = Conexion.getConexion();
 
-     Materia religion = new Materia(5,"Religion", 10 ,true);
+//     Materia religion = new Materia(5,"Religion", 10 ,true);
 //     Materia ingles = new Materia("Ingles", 2 ,true);
 //     Materia informatica = new Materia("Informatica", 4, true);
 //     Materia lengua = new Materia(8,"Lengua", 3, true);
-     MateriaData mat = new MateriaData();
+//     MateriaData mat = new MateriaData();
 //     for(Materia materia: mat.listarMaterias()){
 //         System.out.println("Nombre de la materia: " +materia.getNombre()); 
 //         System.out.println("Año de la materia: " +materia.getAnioMateria()); 
@@ -42,7 +42,7 @@ public class Main {
 //     mat.guardarMateria(matematicas);
 //     mat.guardarMateria(ingles);
 //     mat.guardarMateria(lengua);
-      mat.modificarMateria(religion);
+//      mat.modificarMateria(religion);
       
 //      mat.eliminarMateria(6);
 //     Materia materiaEncontrada = mat.buscarMateria(7);
