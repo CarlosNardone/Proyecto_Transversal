@@ -82,7 +82,7 @@ public class MenuPrincipalView extends javax.swing.JFrame {
 
         jMenuMateria.setText("Materia");
 
-        jmiFormularioMateria.setText("Forrmulario Materia");
+        jmiFormularioMateria.setText("Formulario Materia");
         jmiFormularioMateria.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jmiFormularioMateriaActionPerformed(evt);

@@ -1,21 +1,34 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package vistas;
 
-/**
- *
- * @author Carlos
- */
+import accesoadatos.AlumnoData;
+import accesoadatos.InscripcionData;
+import accesoadatos.MateriaData;
+import entidades.Alumno;
+import entidades.Inscripcion;
+import entidades.Materia;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+
+
 public class AlumnosPorMateriaView extends javax.swing.JInternalFrame {
 
-    /**
-     * Creates new form AlumnosPorMateriaView
-     */
+    private List<Materia>listaM;
+    private List<Alumno> listaA; 
+    private DefaultTableModel modelo;
+    private MateriaData alu = new MateriaData();
+    private InscripcionData insc = new InscripcionData();
+     private AlumnoData aData = new AlumnoData();
+    
     public AlumnosPorMateriaView() {
         initComponents();
+        
+        modelo = new DefaultTableModel();
+        listaM = alu.listarMaterias();
+        listaA = aData.listarAlumnos();
+        cargarMateria();
+        armarCabeceraTabla();
     }
 
     /**
@@ -30,9 +43,9 @@ public class AlumnosPorMateriaView extends javax.swing.JInternalFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        JcbmateriaxAlumnos = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jtAlumnosxMateria = new javax.swing.JTable();
         jbSalir = new javax.swing.JButton();
 
         jPanel1.setForeground(new java.awt.Color(102, 255, 102));
@@ -42,7 +55,13 @@ public class AlumnosPorMateriaView extends javax.swing.JInternalFrame {
 
         jLabel2.setText("Inscripcion por Materia");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        JcbmateriaxAlumnos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JcbmateriaxAlumnosActionPerformed(evt);
+            }
+        });
+
+        jtAlumnosxMateria.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -53,7 +72,7 @@ public class AlumnosPorMateriaView extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(jtAlumnosxMateria);
 
         jbSalir.setText("Salir");
         jbSalir.addActionListener(new java.awt.event.ActionListener() {
@@ -74,8 +93,8 @@ public class AlumnosPorMateriaView extends javax.swing.JInternalFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(55, 55, 55)
                         .addComponent(jLabel2)
-                        .addGap(69, 69, 69)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(31, 31, 31)
+                        .addComponent(JcbmateriaxAlumnos, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -93,10 +112,10 @@ public class AlumnosPorMateriaView extends javax.swing.JInternalFrame {
                 .addGap(33, 33, 33)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(JcbmateriaxAlumnos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(32, 32, 32)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 194, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 198, Short.MAX_VALUE)
                 .addComponent(jbSalir)
                 .addGap(108, 108, 108))
         );
@@ -116,18 +135,63 @@ public class AlumnosPorMateriaView extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSalirActionPerformed
-        // TODO add your handling code here:
+       
         this.dispose();
     }//GEN-LAST:event_jbSalirActionPerformed
 
+    private void JcbmateriaxAlumnosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JcbmateriaxAlumnosActionPerformed
+     borrarFilaTabla();
+    cargarAlumnosxMateria();
+        
+    }//GEN-LAST:event_JcbmateriaxAlumnosActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<Materia> JcbmateriaxAlumnos;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JButton jbSalir;
+    private javax.swing.JTable jtAlumnosxMateria;
     // End of variables declaration//GEN-END:variables
+private void cargarMateria(){
+         for(Materia item:listaM){
+             JcbmateriaxAlumnos.addItem(item);
+     }
+}
+private void borrarFilaTabla(){
+        int indice = modelo.getRowCount() -1;
+        for(int i = indice;i>= 0; i--){
+            modelo.removeRow(i);
+        }
+ }
+private void armarCabeceraTabla(){
+        ArrayList<Object> filaCabecera = new ArrayList<>();
+        filaCabecera.add("ID");
+        filaCabecera.add("DNI");
+        filaCabecera.add("Apellido");
+        filaCabecera.add("Nombre");
+        for(Object it: filaCabecera){
+            modelo.addColumn(it);
+        }
+        jtAlumnosxMateria.setModel(modelo);
+        
+}
+
+private void cargarAlumnosxMateria(){
+        borrarFilaTabla();
+        Materia selec = (Materia) JcbmateriaxAlumnos.getSelectedItem();
+        listaA = (ArrayList) insc.obtenerAlumnosXMateria(selec.getIdMateria());
+        for (Alumno alumno : listaA) {
+        modelo.addRow(new Object[]{
+                alumno.getIdAlumno(),
+                alumno.getDni(),
+                alumno.getApellido(),
+                alumno.getNombre()
+            });
+    }
+    }
+
+
 }

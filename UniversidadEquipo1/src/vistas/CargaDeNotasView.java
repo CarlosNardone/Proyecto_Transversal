@@ -33,12 +33,13 @@ public class CargaDeNotasView extends javax.swing.JInternalFrame {
     
     public CargaDeNotasView() {
         initComponents();
+        inscData = new InscripcionData();
         aData = new AlumnoData();
 //        listaA = (ArrayList<Alumno>)aData.listarAlumnos();
         listaA = aData.listarAlumnos();
-        listaI = aData.
+        listaI = inscData.obtenerInscripciones();
         modelo = new DefaultTableModel();
-        inscData = new InscripcionData();
+        
         mData = new MateriaData();
         materia = new Materia();
         cargarAlumnos();
@@ -171,15 +172,16 @@ public class CargaDeNotasView extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jCboxAlumnoActionPerformed
 
     private void jbGuardarNotaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGuardarNotaActionPerformed
-        borrarFilaTabla();
+        //borrarFilaTabla();
         int filaSeleccionada = jtCargadeNotas.getSelectedRow();
         if (filaSeleccionada != -1) {
         Alumno a = (Alumno) jCboxAlumno.getSelectedItem();
         int idMateria = (Integer) modelo.getValueAt(filaSeleccionada, 0);
-        int nota = (Integer) modelo.getValueAt(filaSeleccionada, 2);
+        String notaString = (String) modelo.getValueAt(filaSeleccionada, 2);
+        int nota = Integer.parseInt(notaString);
+//       int nota = (Integer) modelo.getValueAt(filaSeleccionada, 2);
 
-        // Llama al método que actualiza la nota en la base de datos
-        inscData.actualizarNota(a.getIdAlumno(), idMateria, nota);
+       inscData.actualizarNota(a.getIdAlumno(), idMateria, nota);
        
         }else{
             JOptionPane.showMessageDialog(this, "Usted debe seleccionar una fila de la tabla");
@@ -238,10 +240,15 @@ private void cargarAlumnos(){
         private void cargarDatosNotasMaterias(){
         //borrarFilasTablas();
         Alumno selec = (Alumno) jCboxAlumno.getSelectedItem();
-        listaM = (ArrayList) inscData.obtenerMateriasCursadas(selec.getIdAlumno());
-        inscData.
-        for(Materia m: listaM){
-        modelo.addRow(new Object[]{m.getIdMateria(), m.getNombre(), m.getAnioMateria()});  
+        listaI = (ArrayList) inscData.obtenerInscripcionesPorAlumno(selec.getIdAlumno());
+        for (Inscripcion inscripcion : listaI) {
+        Materia materia = inscripcion.getMateria();
+        int idMateria = materia.getIdMateria();
+        String nombreMateria = materia.getNombre();
+        int nota = inscripcion.getNota();
+        modelo.addRow(new Object[]{idMateria, nombreMateria, nota});
+//        for(Materia m: listaM){
+//        modelo.addRow(new Object[]{m.getIdMateria(), m.getNombre(), m.getAnioMateria()});  
     }
     }
 
