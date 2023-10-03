@@ -249,6 +249,7 @@ public class FormularioDeInscripcionView extends javax.swing.JInternalFrame {
 
     private void jbInscribirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbInscribirActionPerformed
         // TODO add your handling code here:
+        try{
         int filaSeleccionada = jtMaterias.getSelectedRow();
         if(filaSeleccionada != -1){
             Alumno a = (Alumno)jcbSeleccionAlumno.getSelectedItem();
@@ -264,10 +265,14 @@ public class FormularioDeInscripcionView extends javax.swing.JInternalFrame {
         }else{
             JOptionPane.showMessageDialog(this, "Usted debe seleccionar una fila de la tabla");
         }
+        }catch(ClassCastException ex){
+            JOptionPane.showMessageDialog(this, "No deberias editar las filas");
+        }
     }//GEN-LAST:event_jbInscribirActionPerformed
 
     private void jbAnularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAnularActionPerformed
         // TODO add your handling code here:
+        try{
         int filaSeleccionada = jtMaterias.getSelectedRow();
         if(filaSeleccionada != -1){
             
@@ -278,6 +283,9 @@ public class FormularioDeInscripcionView extends javax.swing.JInternalFrame {
             borrarFilaTabla();      
         }else{
             JOptionPane.showMessageDialog(this, "Usted debe seleccionar una fila de la tabla");
+        }
+        }catch(ClassCastException ex){
+            JOptionPane.showMessageDialog(this, "No deberias editar las filas");
         }
     }//GEN-LAST:event_jbAnularActionPerformed
 
